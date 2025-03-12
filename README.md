@@ -23,9 +23,11 @@ Czech Crypto Week will align with:
 | EthCzech | Community Meetup | TBC |
 | Ackee | Happy Hour | TBC |
 | ZKHack | Meetup | TBC |
-| BeerFi | Developer meetup | TBC |
-| Web3Privacy | Privacy meetup | TBC |
-| OnlyDust | Conference | TBC |
+| BeerFi | Developer Meetup | TBC |
+| Web3Privacy | Privacy Meetup | TBC |
+| OnlyDust | Open Source Meetup | TBC |
+
+*TBC - To Be Confirmed
 
 ## Get Involved
 Interested in organizing a side event? Contact us at ethczech@gmail.com
