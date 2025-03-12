@@ -17,7 +17,7 @@ Czech Crypto Week will align with:
 |----------------------|------------|----------------|
 | ProtoLayers | Ethereum R&D Event | Damsky |
 | How to DAO | Workshop | Jan Puncar & Kevin Owocki |
-| Funding the Commons | Conference | Tereza Bizkova |
+| Funding the Commons | Meetup | Tereza Bizkova |
 | Running Club Prague | Community Activity | TBC |
 | Base | Base Meetup | EthCzech |
 | EthCzech | Community Meetup | TBC |
