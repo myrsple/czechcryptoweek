@@ -28,6 +28,8 @@ Czech Crypto Week will align with:
 
 *TBC - To Be Confirmed
 
+Anybody can organize a side-event. This list is preliminary, feel free to submit a pull request an add your event.
+
 ## Get Involved
 Interested in organizing a side event? Contact us at ethczech@gmail.com
 
