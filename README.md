@@ -39,4 +39,3 @@ Interested in organizing a side event? Contact us at ethczech@gmail.com
 
 ---
 
-*Last updated: March 12, 2025*
