@@ -8,8 +8,8 @@ Czech Crypto Week is a week-long blockchain gathering in Prague that brings toge
 **May 26 - June 1, 2025**
 
 Czech Crypto Week will align with:
-* ETHPrague Conference (27 - 29 May)
-* ETHGlobal hackathon (30 May - 1 June)
+* [ETHPrague Conference](https://ethprague.com/) (27 - 29 May)
+* [ETHGlobal hackathon](https://ethglobal.com/events/prague) (30 May - 1 June)
 
 ## Potential Side Events
 
