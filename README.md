@@ -19,7 +19,7 @@ Czech Crypto Week will align with:
 | How to DAO | Workshop | Jan Puncar & Kevin Owocki |
 | Funding the Commons | Meetup | Tereza Bizkova |
 | Running Club Prague | Community Activity | TBC |
-| Base | Base Meetup | EthCzech |
+| Base | Base Developer Meetup | EthCzech |
 | EthCzech | Community Meetup | TBC |
 | Ackee | Happy Hour | TBC |
 | BeerFi | Developer Meetup | TBC |
