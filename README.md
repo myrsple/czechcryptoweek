@@ -28,6 +28,7 @@ Czech Crypto Week will align with:
 | Web3PrivacyNow | Privacy Meetup | TBC |
 | OnlyDust | Open Source Meetup | TBC |
 | Logos |  Meetup | TBC |
+| Dabl.Club |  Workshop/Bootcamp | TBC |
 
 *TBC - To Be Confirmed
 
