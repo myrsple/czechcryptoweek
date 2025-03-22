@@ -29,6 +29,7 @@ Czech Crypto Week will align with:
 | OnlyDust | Open Source Meetup | TBC |
 | Logos |  Meetup | TBC |
 | Dabl.Club |  Workshop/Bootcamp | TBC |
+| ZKHack |  Meetup | TBC |
 
 *TBC - To Be Confirmed
 
