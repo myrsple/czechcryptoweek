@@ -30,6 +30,7 @@ Czech Crypto Week will align with:
 | Logos |  Meetup | TBC |
 | Dabl.Club |  Workshop/Bootcamp | TBC |
 | ZKHack |  Meetup | TBC |
+| Longevity |  Meetup | TBC |
 
 *TBC - To Be Confirmed
 
