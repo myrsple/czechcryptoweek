@@ -1,8 +1,8 @@
 {
-  "name": "ProtoLayers Ethereum R&D Event",
+  "name": "ProtoLayers Builder Conference",
   "date": "May 26, 2025",
   "location": "Prague, Czech Republic",
   "description": "Join ProtoLayers for a deep dive into cutting-edge Ethereum research and development. This focused event brings together researchers and developers to discuss the latest advances in Ethereum protocol, layer-2 solutions, and scaling technologies.",
   "organizers": ["Damsky", "ProtoLayers Team"],
-  "website": "https://protolayers.org"
+  "website": "https://protolayers.dev"
 } 
