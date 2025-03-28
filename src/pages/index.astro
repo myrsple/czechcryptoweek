@@ -176,22 +176,15 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			<!-- View Mode Toggle -->
 			<div class="view-toggle">
 				<button id="card-view-btn" class="view-btn active" aria-pressed="true">
-					<span class="sr-only">Card View</span>
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-						<path d="M4 2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8-1a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-4zm0 1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM4 10a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H4zm0 1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1zm8-1a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-4zm0 1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1z"/>
-					</svg>
+					Overview
 				</button>
 				<button id="day-view-btn" class="view-btn" aria-pressed="false">
-					<span class="sr-only">Days View</span>
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-						<path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1v2H2V1h12zm-1 3v8H3V4h10z"/>
-					</svg>
+					Days
 				</button>
 			</div>
 			
 			<!-- Filter by Day -->
 			<div class="filter-group">
-				<h3 class="filter-title">Filter by Day</h3>
 				<div class="days-filter">
 					<button class="day-btn active" data-day="all">All Days</button>
 					{uniqueDates.map(date => (
@@ -202,7 +195,6 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			
 			<!-- Filter by Categories/Tags -->
 			<div class="filter-group">
-				<h3 class="filter-title">Filter by Category</h3>
 				<div class="tags-filter">
 					{allTags.map(tag => (
 						<button class="tag-btn" data-tag={tag}>{tag}</button>
