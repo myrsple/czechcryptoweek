@@ -24,47 +24,6 @@ async function fetchEventData() {
 	}
 }
 
-// More explicit filtering logic to ensure proper categorization
-const confirmedEvents = events.filter(event => event.confirmed === true);
-const tbcEvents = events.filter(event => event.confirmed === false);
-
-// Compute unique dates and tags for filtering
-const eventDates = confirmedEvents
-	.filter(event => event.dateISO) // Filter events with valid dates
-	.map(event => ({
-		date: event.dateISO,
-		displayDate: new Date(event.dateISO).toLocaleDateString('en-US', { 
-			weekday: 'short', 
-			month: 'short', 
-			day: 'numeric' 
-		})
-	}));
-
-// Remove duplicates and sort by date
-const uniqueDates = Array.from(
-	new Map(eventDates.map(item => [item.date, item])).values()
-).sort((a, b) => new Date(a.date) - new Date(b.date));
-
-// Get all unique tags across events
-const allTags = [...new Set(
-	confirmedEvents.flatMap(event => event.tags || [])
-)].sort();
-
-// Group events by date for display
-const eventsByDate = {};
-confirmedEvents.forEach(event => {
-	if (!event.dateISO) return;
-	
-	const date = event.dateISO;
-	if (!eventsByDate[date]) {
-		eventsByDate[date] = [];
-	}
-	eventsByDate[date].push(event);
-});
-
-console.log("Confirmed events:", confirmedEvents.map(e => e.name));
-console.log("TBC events:", tbcEvents.map(e => e.name));
-
 // Define functions for sorting and processing events
 function processEvents(events) {
 	console.log("Processing events:", events.map(e => e.name));
@@ -187,7 +146,7 @@ function processEvents(events) {
 const eventData = await fetchEventData();
 const { confirmedEvents, tbcEvents, uniqueDates, uniqueTags, eventsByDate } = processEvents(eventData);
 
-// Remove duplicated event processing code
+// Get all unique tags for filtering UI
 const allTags = [...uniqueTags];
 
 console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
@@ -211,131 +170,24 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 	<!-- Confirmed Events Section -->
 	<section id="events" class="events-section">
 		<h2>Confirmed Events</h2>
-		
-		<!-- View Toggle -->
-		<div class="view-toggle-container">
-			<div class="view-toggle">
-				<button class="view-toggle-button selected" data-view="cards">Card View</button>
-				<button class="view-toggle-button" data-view="days">Days View</button>
-			</div>
-		</div>
-		
-		<!-- Day Filter Buttons -->
-		<div class="filter-section day-filter-section hidden">
-			<h3>Filter by Day</h3>
-			<div class="day-filter">
-				<button class="filter-button day-button selected" data-day="all">All Days</button>
-				{uniqueDates.map(dateObj => (
-					<button class="filter-button day-button" data-day={dateObj.date}>
-						{dateObj.displayDate}
-					</button>
-				))}
-			</div>
-		</div>
-		
-		<!-- Tag Filter Buttons -->
-		<div class="filter-section">
-			<h3>Filter by Category</h3>
-			<div class="tag-filter">
-				{allTags.map(tag => (
-					<button class="filter-button tag-button" data-tag={tag}>{tag}</button>
-				))}
-			</div>
-		</div>
-		
-		<!-- Events Grouped by Date -->
-		<div class="events-container days-view hidden">
-			{uniqueDates.map(dateObj => (
-				<div class="date-group" data-date={dateObj.date}>
-					<h3 class="date-heading">
-						{new Date(dateObj.date).toLocaleDateString('en-US', { 
-							weekday: 'long', 
-							month: 'long', 
-							day: 'numeric' 
-						})}
-					</h3>
-					<ul class="event-list">
-						{eventsByDate[dateObj.date]?.map(event => (
-							<li class="event-box" data-tags={event.tags?.join(',')}>
-								<a href={`/events/${event.id}`} class="event-link">
-									<div class="event-content">
-										<h3 class="event-title">{event.name}</h3>
-										<p class="event-date">
-											{event.date}
-											{event.dayIndicator && (
-												<span class="day-indicator">{event.dayIndicator}</span>
-											)}
-										</p>
-										
-										<div class="tags-list">
-											{event.tags?.map(tag => (
-												<span class="tag">{tag}</span>
-											))}
-										</div>
-										
-										<p class="event-description">{event.short_description}</p>
-									</div>
-								</a>
-								{event.website && (
-									<a href={event.website} target="_blank" rel="noopener noreferrer" class="website-link" onclick="event.stopPropagation();">
-										Visit Official Website
-									</a>
-								)}
-							</li>
-						))}
-					</ul>
-				</div>
-			))}
-			
-			<div class="no-results hidden">
-				<p>No events match your selected filters. Please try different filter options.</p>
-			</div>
-		</div>
-		
-		<!-- Original Card View -->
-		<div class="events-container cards-view">
-			<ul class="event-list">
-				{confirmedEvents.sort((a, b) => {
-					if (!a.dateISO) return 1;
-					if (!b.dateISO) return -1;
-					return new Date(a.dateISO) - new Date(b.dateISO);
-				}).map(event => (
-					<li class="event-box" data-tags={event.tags?.join(',')} data-date={event.dateISO}>
-						<a href={`/events/${event.id}`} class="event-link">
-							<div class="event-content">
-								<h3 class="event-title">{event.name}</h3>
-								<p class="event-date">
-									{event.date}
-									{event.dayIndicator && (
-										<span class="day-indicator">{event.dayIndicator}</span>
-									)}
-								</p>
-								
-								<div class="tags-list">
-									{event.tags?.map(tag => (
-										<span class="tag">{tag}</span>
-									))}
-								</div>
-								
-								<p class="event-description">{event.short_description}</p>
-							</div>
+		<ul class="event-list">
+			{confirmedEvents.map(event => (
+				<li class="event-box">
+					<a href={`/events/${event.id}`} class="event-link">
+						<div class="event-content">
+							<h3 class="event-title">{event.name}</h3>
+							<p class="event-date">{event.date}</p>
+							<p class="event-description">{event.short_description}</p>
+						</div>
+					</a>
+					{event.website && (
+						<a href={event.website} target="_blank" rel="noopener noreferrer" class="website-link" onclick="event.stopPropagation();">
+							Visit Official Website
 						</a>
-						{event.website && (
-							<a href={event.website} target="_blank" rel="noopener noreferrer" class="website-link" onclick="event.stopPropagation();">
-								Visit Official Website
-							</a>
-						)}
-						
-						{/* Debug info */}
-						{event.name === 'Urbe Campus' && <div style="display: none;">Urbe Campus is here!</div>}
-					</li>
-				))}
-			</ul>
-			
-			<div class="no-results hidden">
-				<p>No events match your selected filters. Please try different filter options.</p>
-			</div>
-		</div>
+					)}
+				</li>
+			))}
+		</ul>
 	</section>
 	
 	<!-- TBC Events Section -->
@@ -444,97 +296,6 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			z-index: 1;
 		}
 
-		/* Filters */
-		.filter-section {
-			margin: 30px 0;
-		}
-		
-		.filter-section h3 {
-			font-size: 1.1rem;
-			margin-bottom: 15px;
-			text-align: center;
-		}
-		
-		.day-filter, .tag-filter {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			gap: 10px;
-			margin-bottom: 20px;
-		}
-		
-		.filter-button {
-			padding: 8px 16px;
-			border: 1px solid #e0e0e0;
-			background-color: white;
-			border-radius: 30px;
-			font-size: 0.9rem;
-			cursor: pointer;
-			transition: all 0.2s ease;
-		}
-		
-		.filter-button:hover {
-			background-color: #f5f5f5;
-		}
-		
-		.filter-button.selected {
-			background-color: var(--primary);
-			color: white;
-			border-color: var(--primary);
-		}
-		
-		.tag-button {
-			font-size: 0.85rem;
-		}
-		
-		/* View Toggle */
-		.view-toggle-container {
-			display: flex;
-			justify-content: center;
-			margin: 30px 0 15px;
-		}
-		
-		.view-toggle {
-			display: inline-flex;
-			background-color: #f0f0f0;
-			border-radius: 30px;
-			padding: 4px;
-			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-		}
-		
-		.view-toggle-button {
-			padding: 8px 20px;
-			border: none;
-			background-color: transparent;
-			border-radius: 25px;
-			font-size: 0.95rem;
-			font-weight: 500;
-			cursor: pointer;
-			transition: all 0.2s ease;
-		}
-		
-		.view-toggle-button:hover {
-			background-color: rgba(0, 0, 0, 0.05);
-		}
-		
-		.view-toggle-button.selected {
-			background-color: white;
-			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-		}
-		
-		/* Events Container */
-		.date-group {
-			margin-bottom: 40px;
-		}
-		
-		.date-heading {
-			margin-bottom: 20px;
-			color: var(--primary);
-			font-size: 1.5rem;
-			padding-bottom: 10px;
-			border-bottom: 1px solid #e0e0e0;
-		}
-
 		/* Events Section */
 		.events-section, .tbc-section {
 			margin: 60px 0;
@@ -600,33 +361,6 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			margin-bottom: 15px;
 			flex-shrink: 0;
 		}
-		
-		.day-indicator {
-			display: inline-block;
-			background-color: var(--primary);
-			color: white;
-			font-size: 0.75rem;
-			padding: 2px 8px;
-			border-radius: 12px;
-			margin-left: 8px;
-			font-weight: 500;
-		}
-		
-		.tags-list {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 5px;
-			margin-bottom: 15px;
-		}
-		
-		.tag {
-			background-color: #e0e0e0;
-			color: #666;
-			padding: 4px 8px;
-			border-radius: 4px;
-			font-size: 0.8rem;
-			font-weight: 500;
-		}
 
 		.event-description {
 			margin-bottom: 20px;
@@ -650,18 +384,6 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 
 		.website-link:hover {
 			background-color: var(--primary-dark);
-		}
-		
-		.no-results {
-			text-align: center;
-			padding: 40px 20px;
-			background-color: var(--bg-light);
-			border-radius: 8px;
-			margin-top: 20px;
-		}
-		
-		.hidden {
-			display: none;
 		}
 
 		/* TBC Section */
@@ -789,219 +511,4 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			}
 		}
 	</style>
-	
-	<script>
-		// Initialize filter state
-		let selectedDay = null;
-		let selectedTags = new Set();
-		let currentView = 'cards'; // Default view is 'cards'
-		
-		document.addEventListener('DOMContentLoaded', () => {
-			const dayButtons = document.querySelectorAll('.day-button');
-			const tagButtons = document.querySelectorAll('.tag-button');
-			const dateGroups = document.querySelectorAll('.date-group');
-			const dayFilterSection = document.querySelector('.day-filter-section');
-			const daysView = document.querySelector('.days-view');
-			const cardsView = document.querySelector('.cards-view');
-			const viewToggleButtons = document.querySelectorAll('.view-toggle-button');
-			const dayViewNoResults = document.querySelector('.days-view .no-results');
-			const cardViewNoResults = document.querySelector('.cards-view .no-results');
-			
-			// Initialize view state
-			if (currentView === 'cards') {
-				daysView.classList.add('hidden');
-				cardsView.classList.remove('hidden');
-				dayFilterSection.classList.add('hidden');
-			} else {
-				daysView.classList.remove('hidden');
-				cardsView.classList.add('hidden');
-				dayFilterSection.classList.remove('hidden');
-			}
-			
-			// View toggle buttons click handler
-			viewToggleButtons.forEach(button => {
-				button.addEventListener('click', () => {
-					// Update UI - highlight selected button
-					viewToggleButtons.forEach(btn => btn.classList.remove('selected'));
-					button.classList.add('selected');
-					
-					// Get selected view
-					const selectedView = button.dataset.view;
-					
-					// Toggle view visibility
-					if (selectedView === 'days') {
-						daysView.classList.remove('hidden');
-						cardsView.classList.add('hidden');
-						dayFilterSection.classList.remove('hidden');
-						currentView = 'days';
-					} else { // cards view
-						daysView.classList.add('hidden');
-						cardsView.classList.remove('hidden');
-						dayFilterSection.classList.toggle('hidden', selectedDay === null);
-						currentView = 'cards';
-						// Apply filters to card view
-						applyCardViewFilters();
-					}
-				});
-			});
-			
-			// Day filter button click handler
-			dayButtons.forEach(button => {
-				button.addEventListener('click', () => {
-					// Update UI - highlight selected button
-					dayButtons.forEach(btn => btn.classList.remove('selected'));
-					button.classList.add('selected');
-					
-					// Update filter state
-					selectedDay = button.dataset.day === 'all' ? null : button.dataset.day;
-					
-					// Apply filters based on current view
-					if (currentView === 'days') {
-						applyDayViewFilters(dateGroups, dayViewNoResults);
-					} else {
-						applyCardViewFilters();
-					}
-				});
-			});
-			
-			// Tag filter button click handler
-			tagButtons.forEach(button => {
-				button.addEventListener('click', () => {
-					// Toggle button selection state
-					button.classList.toggle('selected');
-					
-					// Update filter state
-					const tag = button.dataset.tag;
-					if (selectedTags.has(tag)) {
-						selectedTags.delete(tag);
-					} else {
-						selectedTags.add(tag);
-					}
-					
-					// Apply filters based on current view
-					if (currentView === 'days') {
-						applyDayViewFilters(dateGroups, dayViewNoResults);
-					} else {
-						applyCardViewFilters();
-					}
-				});
-			});
-			
-			// Filter application logic for day view
-			function applyDayViewFilters(dateGroups, noResults) {
-				let hasVisibleEvents = false;
-				
-				// If no day filter is selected, show all date groups
-				if (!selectedDay) {
-					dateGroups.forEach(group => {
-						group.classList.remove('hidden');
-						
-						// Filter events within this day by tags
-						const eventBoxes = group.querySelectorAll('.event-box');
-						let hasVisibleEventsInGroup = false;
-						
-						eventBoxes.forEach(box => {
-							// Get event tags
-							const eventTags = box.dataset.tags ? box.dataset.tags.split(',') : [];
-							
-							// Check if event should be visible based on selected tags
-							const tagMatches = selectedTags.size === 0 || 
-								[...selectedTags].some(tag => eventTags.includes(tag));
-							
-							if (tagMatches) {
-								box.classList.remove('hidden');
-								hasVisibleEventsInGroup = true;
-								hasVisibleEvents = true;
-							} else {
-								box.classList.add('hidden');
-							}
-						});
-						
-						// If no events are visible in this group, hide the whole group
-						if (!hasVisibleEventsInGroup) {
-							group.classList.add('hidden');
-						}
-					});
-				} else {
-					// Filter by specific day
-					dateGroups.forEach(group => {
-						const dayMatches = group.dataset.date === selectedDay;
-						
-						if (dayMatches) {
-							group.classList.remove('hidden');
-							
-							// Filter events within this day by tags
-							const eventBoxes = group.querySelectorAll('.event-box');
-							let hasVisibleEventsInGroup = false;
-							
-							eventBoxes.forEach(box => {
-								// Get event tags
-								const eventTags = box.dataset.tags ? box.dataset.tags.split(',') : [];
-								
-								// Check if event should be visible based on selected tags
-								const tagMatches = selectedTags.size === 0 || 
-									[...selectedTags].some(tag => eventTags.includes(tag));
-								
-								if (tagMatches) {
-									box.classList.remove('hidden');
-									hasVisibleEventsInGroup = true;
-									hasVisibleEvents = true;
-								} else {
-									box.classList.add('hidden');
-								}
-							});
-							
-							// If no events are visible in this group, hide the whole group
-							if (!hasVisibleEventsInGroup) {
-								group.classList.add('hidden');
-							}
-						} else {
-							group.classList.add('hidden');
-						}
-					});
-				}
-				
-				// Show "no results" message if needed
-				if (hasVisibleEvents) {
-					noResults.classList.add('hidden');
-				} else {
-					noResults.classList.remove('hidden');
-				}
-			}
-			
-			// Filter application logic for card view
-			function applyCardViewFilters() {
-				const eventBoxes = cardsView.querySelectorAll('.event-box');
-				let hasVisibleEvents = false;
-				
-				eventBoxes.forEach(box => {
-					// Get event data
-					const eventTags = box.dataset.tags ? box.dataset.tags.split(',') : [];
-					const eventDate = box.dataset.date;
-					
-					// Check day filter
-					const dayMatches = !selectedDay || eventDate === selectedDay;
-					
-					// Check tag filter
-					const tagMatches = selectedTags.size === 0 || 
-						[...selectedTags].some(tag => eventTags.includes(tag));
-					
-					// Show/hide based on filters
-					if (dayMatches && tagMatches) {
-						box.classList.remove('hidden');
-						hasVisibleEvents = true;
-					} else {
-						box.classList.add('hidden');
-					}
-				});
-				
-				// Show "no results" message if needed
-				if (hasVisibleEvents) {
-					cardViewNoResults.classList.add('hidden');
-				} else {
-					cardViewNoResults.classList.remove('hidden');
-				}
-			}
-		});
-	</script>
 </BaseLayout>
