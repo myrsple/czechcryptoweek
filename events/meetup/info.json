@@ -4,9 +4,5 @@
   "location": "Paralelní Polis, Prague, Czech Republic",
   "description": "Join the local Ethereum community for an evening of networking, short presentations, and discussions. This is a great opportunity to meet like-minded enthusiasts, developers, and entrepreneurs who are building the future of Web3 in the Czech Republic and beyond.",
   "organizers": ["EthCzech Community"],
-  "website": "https://lu.ma/user/ethczech",
-  "sponsors": [
-    "Paralelní Polis",
-    "BeerFi"
-  ]
+  "website": "https://lu.ma/user/ethczech"
 } 

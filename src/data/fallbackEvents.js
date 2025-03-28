@@ -57,8 +57,7 @@ export const fallbackEvents = [
     confirmed: true,
     location: "Paralelní Polis, Prague, Czech Republic",
     description: "Join the local Ethereum community for an evening of networking, short presentations, and discussions. This is a great opportunity to meet like-minded enthusiasts, developers, and entrepreneurs who are building the future of Web3 in the Czech Republic and beyond.",
-    organizers: ["EthCzech Community"],
-    sponsors: ["Paralelní Polis", "BeerFi"]
+    organizers: ["EthCzech Community"]
   },
   {
     name: "Ackee Happy Hour",
