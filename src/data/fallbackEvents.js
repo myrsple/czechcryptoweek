@@ -43,7 +43,7 @@ export const fallbackEvents = [
     date: "May 28, 2025",
     short_description: "Learn how to create and manage DAOs with Jan Puncar & Kevin Owocki.",
     website: "https://howtodao.eth",
-    confirmed: true,
+    confirmed: false,
     location: "Prague, Czech Republic",
     description: "Learn how to create, govern, and participate in Decentralized Autonomous Organizations (DAOs) with experts Jan Puncar and Kevin Owocki. This hands-on workshop will cover practical aspects of DAO creation, governance mechanisms, treasury management, and real-world use cases.",
     organizers: ["Jan Puncar", "Kevin Owocki"]
