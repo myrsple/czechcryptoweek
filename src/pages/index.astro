@@ -2,15 +2,24 @@
 import { fallbackEvents } from '../data/fallbackEvents.js';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Use GitHub raw URL for deployed site with error handling
-let events = [];
-try {
-	const response = await fetch('https://raw.githubusercontent.com/EthCzech/czechcryptoweek/main/events/index.json');
-	events = await response.json();
-} catch (error) {
-	console.error('Error fetching events:', error);
-	// Fallback data if fetch fails
-	events = fallbackEvents;
+// Fetch event data from GitHub repository with error handling
+async function fetchEventData() {
+	try {
+		console.log("Fetching event data...");
+		const response = await fetch('https://raw.githubusercontent.com/EthCzech/czechcryptoweek/main/events/index.json');
+		
+		if (!response.ok) {
+			console.error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+			return fallbackEvents;
+		}
+		
+		const data = await response.json();
+		console.log("Successfully fetched event data");
+		return data;
+	} catch (error) {
+		console.error("Error fetching event data:", error);
+		return fallbackEvents;
+	}
 }
 
 // More explicit filtering logic to ensure proper categorization
@@ -53,6 +62,121 @@ confirmedEvents.forEach(event => {
 
 console.log("Confirmed events:", confirmedEvents.map(e => e.name));
 console.log("TBC events:", tbcEvents.map(e => e.name));
+
+// Define functions for sorting and processing events
+function processEvents(events) {
+	const confirmed = events.filter(event => event.confirmed);
+	const tbc = events.filter(event => !event.confirmed);
+
+	// Get unique dates for filtering
+	const uniqueDatesMap = new Map();
+	
+	// Track all events by date for the day view
+	const eventsByDate = {};
+	
+	// Expand multi-day events to appear on each day they occur
+	confirmed.forEach(event => {
+		if (!event.dateISO) return;
+		
+		// Parse date ranges for multi-day events
+		let startDate, endDate;
+		
+		if (event.date && event.date.includes('-')) {
+			// Check if this is a date range like "May 28-31, 2025"
+			const dateParts = event.date.match(/([a-zA-Z]+)\s+(\d+)-(\d+),\s+(\d+)/);
+			
+			if (dateParts) {
+				// This is a multi-day event in the same month
+				const [_, month, startDay, endDay, year] = dateParts;
+				startDate = new Date(event.dateISO);
+				
+				// Create end date by parsing from the date string
+				const monthIndex = new Date(`${month} 1, ${year}`).getMonth();
+				endDate = new Date(parseInt(year), monthIndex, parseInt(endDay));
+			} else if (event.date.includes(' - ')) {
+				// This is a date range like "May 30 - June 1, 2025"
+				const [startDateStr, endDateStr] = event.date.split(' - ');
+				startDate = new Date(event.dateISO);
+				
+				// Try to parse the end date from the format
+				const endParts = endDateStr.match(/([a-zA-Z]+)\s+(\d+),\s+(\d+)/);
+				if (endParts) {
+					const [_, month, day, year] = endParts;
+					const monthIndex = new Date(`${month} 1, ${year}`).getMonth();
+					endDate = new Date(parseInt(year), monthIndex, parseInt(day));
+				}
+			}
+		}
+		
+		// Default to single day if no range was parsed
+		if (!startDate) {
+			startDate = new Date(event.dateISO);
+			endDate = new Date(event.dateISO);
+		}
+		
+		// Add the event to each day it spans
+		let currentDate = new Date(startDate);
+		let dayCounter = 1;
+		const totalDays = Math.floor((endDate - startDate) / (24 * 60 * 60 * 1000)) + 1;
+		
+		while (currentDate <= endDate) {
+			const dateString = currentDate.toISOString().split('T')[0];
+			
+			// Create a copy of the event for this day with day indicator
+			const eventCopy = {...event};
+			
+			// Add day indicator for multi-day events
+			if (totalDays > 1) {
+				eventCopy.dayIndicator = `Day ${dayCounter}/${totalDays}`;
+			}
+			
+			// Initialize the array for this date if it doesn't exist yet
+			if (!eventsByDate[dateString]) {
+				eventsByDate[dateString] = [];
+			}
+			
+			// Add event to this date's array
+			eventsByDate[dateString].push(eventCopy);
+			
+			// Add to unique dates map for filtering UI
+			uniqueDatesMap.set(dateString, {
+				date: dateString,
+				displayDate: currentDate.toLocaleDateString('en-US', {
+					month: 'short',
+					day: 'numeric'
+				})
+			});
+			
+			// Move to next day
+			currentDate.setDate(currentDate.getDate() + 1);
+			dayCounter++;
+		}
+	});
+	
+	// Convert the map to an array and sort by date
+	const uniqueDates = Array.from(uniqueDatesMap.values())
+		.sort((a, b) => new Date(a.date) - new Date(b.date));
+	
+	// Get unique tags for filtering
+	const uniqueTags = new Set();
+	confirmed.forEach(event => {
+		if (event.tags) {
+			event.tags.forEach(tag => uniqueTags.add(tag));
+		}
+	});
+	
+	return {
+		confirmedEvents: confirmed,
+		tbcEvents: tbc,
+		uniqueDates,
+		uniqueTags: Array.from(uniqueTags).sort(),
+		eventsByDate
+	};
+}
+
+// Fetch event data and handle errors
+const eventData = await fetchEventData();
+const { confirmedEvents, tbcEvents, uniqueDates, uniqueTags, eventsByDate } = processEvents(eventData);
 ---
 
 <BaseLayout title="Czech Crypto Week | Prague Blockchain Week 2025" description="The premier blockchain and cryptocurrency event series in Prague, Czech Republic. Join global developers, entrepreneurs, and enthusiasts in Central Europe's crypto hub.">
@@ -117,12 +241,17 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 						})}
 					</h3>
 					<ul class="event-list">
-						{eventsByDate[dateObj.date].map(event => (
+						{eventsByDate[dateObj.date]?.map(event => (
 							<li class="event-box" data-tags={event.tags?.join(',')}>
 								<a href={`/events/${event.id}`} class="event-link">
 									<div class="event-content">
 										<h3 class="event-title">{event.name}</h3>
-										<p class="event-date">{event.date}</p>
+										<p class="event-date">
+											{event.date}
+											{event.dayIndicator && (
+												<span class="day-indicator">{event.dayIndicator}</span>
+											)}
+										</p>
 										
 										<div class="tags-list">
 											{event.tags?.map(tag => (
@@ -161,7 +290,12 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 						<a href={`/events/${event.id}`} class="event-link">
 							<div class="event-content">
 								<h3 class="event-title">{event.name}</h3>
-								<p class="event-date">{event.date}</p>
+								<p class="event-date">
+									{event.date}
+									{event.dayIndicator && (
+										<span class="day-indicator">{event.dayIndicator}</span>
+									)}
+								</p>
 								
 								<div class="tags-list">
 									{event.tags?.map(tag => (
@@ -450,6 +584,17 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 			flex-shrink: 0;
 		}
 		
+		.day-indicator {
+			display: inline-block;
+			background-color: var(--primary);
+			color: white;
+			font-size: 0.75rem;
+			padding: 2px 8px;
+			border-radius: 12px;
+			margin-left: 8px;
+			font-weight: 500;
+		}
+		
 		.tags-list {
 			display: flex;
 			flex-wrap: wrap;
@@ -729,14 +874,12 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 			function applyDayViewFilters(dateGroups, noResults) {
 				let hasVisibleEvents = false;
 				
-				dateGroups.forEach(group => {
-					// First filter by day
-					const dayMatches = !selectedDay || group.dataset.date === selectedDay;
-					
-					if (dayMatches) {
+				// If no day filter is selected, show all date groups
+				if (!selectedDay) {
+					dateGroups.forEach(group => {
 						group.classList.remove('hidden');
 						
-						// Then filter events within this day by tags
+						// Filter events within this day by tags
 						const eventBoxes = group.querySelectorAll('.event-box');
 						let hasVisibleEventsInGroup = false;
 						
@@ -761,10 +904,45 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 						if (!hasVisibleEventsInGroup) {
 							group.classList.add('hidden');
 						}
-					} else {
-						group.classList.add('hidden');
-					}
-				});
+					});
+				} else {
+					// Filter by specific day
+					dateGroups.forEach(group => {
+						const dayMatches = group.dataset.date === selectedDay;
+						
+						if (dayMatches) {
+							group.classList.remove('hidden');
+							
+							// Filter events within this day by tags
+							const eventBoxes = group.querySelectorAll('.event-box');
+							let hasVisibleEventsInGroup = false;
+							
+							eventBoxes.forEach(box => {
+								// Get event tags
+								const eventTags = box.dataset.tags ? box.dataset.tags.split(',') : [];
+								
+								// Check if event should be visible based on selected tags
+								const tagMatches = selectedTags.size === 0 || 
+									[...selectedTags].some(tag => eventTags.includes(tag));
+								
+								if (tagMatches) {
+									box.classList.remove('hidden');
+									hasVisibleEventsInGroup = true;
+									hasVisibleEvents = true;
+								} else {
+									box.classList.add('hidden');
+								}
+							});
+							
+							// If no events are visible in this group, hide the whole group
+							if (!hasVisibleEventsInGroup) {
+								group.classList.add('hidden');
+							}
+						} else {
+							group.classList.add('hidden');
+						}
+					});
+				}
 				
 				// Show "no results" message if needed
 				if (hasVisibleEvents) {
