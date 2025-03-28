@@ -170,24 +170,111 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 	<!-- Confirmed Events Section -->
 	<section id="events" class="events-section">
 		<h2>Confirmed Events</h2>
-		<ul class="event-list">
-			{confirmedEvents.map(event => (
-				<li class="event-box">
-					<a href={`/events/${event.id}`} class="event-link">
-						<div class="event-content">
-							<h3 class="event-title">{event.name}</h3>
-							<p class="event-date">{event.date}</p>
-							<p class="event-description">{event.short_description}</p>
-						</div>
-					</a>
-					{event.website && (
-						<a href={event.website} target="_blank" rel="noopener noreferrer" class="website-link" onclick="event.stopPropagation();">
-							Visit Official Website
+		
+		<!-- Filtering UI -->
+		<div class="filtering-ui">
+			<!-- View Mode Toggle -->
+			<div class="view-toggle">
+				<button id="card-view-btn" class="view-btn active" aria-pressed="true">
+					<span class="sr-only">Card View</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M4 2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm0 1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8-1a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-4zm0 1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM4 10a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H4zm0 1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1zm8-1a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-4zm0 1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1z"/>
+					</svg>
+				</button>
+				<button id="day-view-btn" class="view-btn" aria-pressed="false">
+					<span class="sr-only">Days View</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1v2H2V1h12zm-1 3v8H3V4h10z"/>
+					</svg>
+				</button>
+			</div>
+			
+			<!-- Filter by Day -->
+			<div class="filter-group">
+				<h3 class="filter-title">Filter by Day</h3>
+				<div class="days-filter">
+					<button class="day-btn active" data-day="all">All Days</button>
+					{uniqueDates.map(date => (
+						<button class="day-btn" data-day={date.date}>{date.displayDate}</button>
+					))}
+				</div>
+			</div>
+			
+			<!-- Filter by Categories/Tags -->
+			<div class="filter-group">
+				<h3 class="filter-title">Filter by Category</h3>
+				<div class="tags-filter">
+					{allTags.map(tag => (
+						<button class="tag-btn" data-tag={tag}>{tag}</button>
+					))}
+				</div>
+			</div>
+			
+			<!-- Active Filters & Reset -->
+			<div class="active-filters">
+				<div id="active-filters-list"></div>
+				<button id="reset-filters" class="reset-btn">Reset All Filters</button>
+			</div>
+		</div>
+		
+		<!-- Card View (default) -->
+		<div id="card-view" class="view-mode active">
+			<ul class="event-list">
+				{confirmedEvents.map(event => (
+					<li class="event-box" data-date={event.dateISO} data-tags={event.tags ? event.tags.join(',') : ''}>
+						<a href={`/events/${event.id}`} class="event-link">
+							<div class="event-content">
+								<h3 class="event-title">{event.name}</h3>
+								<p class="event-date">{event.date}</p>
+								<p class="event-description">{event.short_description}</p>
+							</div>
 						</a>
-					)}
-				</li>
+						{event.website && (
+							<a href={event.website} target="_blank" rel="noopener noreferrer" class="website-link" onclick="event.stopPropagation();">
+								Visit Official Website
+							</a>
+						)}
+					</li>
+				))}
+			</ul>
+			<div id="no-results" class="no-results" style="display: none;">
+				<p>No events match your current filters. Try adjusting your selection.</p>
+				<button id="reset-filters-inline" class="reset-btn">Reset All Filters</button>
+			</div>
+		</div>
+		
+		<!-- Days View -->
+		<div id="day-view" class="view-mode">
+			{Object.entries(eventsByDate).sort(([dateA], [dateB]) => dateA.localeCompare(dateB)).map(([date, dayEvents]) => (
+				<div class="day-group" data-date={date}>
+					<h3 class="day-header">{new Date(date).toLocaleDateString('en-US', {weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'})}</h3>
+					<ul class="day-events">
+						{dayEvents.map(event => (
+							<li class="day-event" data-tags={event.tags ? event.tags.join(',') : ''}>
+								<a href={`/events/${event.id}`} class="day-event-link">
+									<div class="day-event-content">
+										<h4 class="day-event-title">
+											{event.name}
+											{event.dayIndicator && <span class="day-indicator">{event.dayIndicator}</span>}
+										</h4>
+										<p class="day-event-description">{event.short_description}</p>
+									</div>
+								</a>
+								{event.website && (
+									<a href={event.website} target="_blank" rel="noopener noreferrer" class="day-website-link">
+										Visit Website
+									</a>
+								)}
+							</li>
+						))}
+					</ul>
+				</div>
 			))}
-		</ul>
+			<div id="no-day-results" class="no-results" style="display: none;">
+				<p>No events match your current filters. Try adjusting your selection.</p>
+				<button id="reset-filters-day-inline" class="reset-btn">Reset All Filters</button>
+			</div>
+		</div>
 	</section>
 	
 	<!-- TBC Events Section -->
@@ -306,6 +393,146 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			margin-bottom: 30px;
 		}
 
+		/* Filtering UI */
+		.filtering-ui {
+			margin-bottom: 30px;
+			background-color: var(--bg-light);
+			padding: 20px;
+			border-radius: 8px;
+		}
+		
+		.view-toggle {
+			display: flex;
+			justify-content: center;
+			margin-bottom: 20px;
+			gap: 10px;
+		}
+		
+		.view-btn {
+			background-color: var(--bg-light);
+			border: 2px solid var(--border-color);
+			padding: 8px 15px;
+			border-radius: 6px;
+			cursor: pointer;
+			transition: all 0.2s;
+		}
+		
+		.view-btn.active {
+			background-color: var(--primary);
+			color: white;
+			border-color: var(--primary);
+		}
+		
+		.view-btn:hover:not(.active) {
+			background-color: var(--bg-hover);
+		}
+		
+		.sr-only {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			padding: 0;
+			margin: -1px;
+			overflow: hidden;
+			clip: rect(0, 0, 0, 0);
+			white-space: nowrap;
+			border-width: 0;
+		}
+		
+		.filter-group {
+			margin-bottom: 20px;
+		}
+		
+		.filter-title {
+			font-size: 0.95rem;
+			margin-bottom: 10px;
+			color: var(--text-light);
+		}
+		
+		.days-filter, .tags-filter {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+		}
+		
+		.day-btn, .tag-btn {
+			background-color: white;
+			border: 1px solid var(--border-color);
+			padding: 6px 12px;
+			border-radius: 50px;
+			font-size: 0.9rem;
+			cursor: pointer;
+			transition: all 0.2s;
+		}
+		
+		.day-btn.active {
+			background-color: var(--primary);
+			color: white;
+			border-color: var(--primary);
+		}
+		
+		.tag-btn.active {
+			background-color: var(--secondary);
+			color: white;
+			border-color: var(--secondary);
+		}
+		
+		.day-btn:hover:not(.active), .tag-btn:hover:not(.active) {
+			background-color: var(--bg-hover);
+		}
+		
+		.active-filters {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-top: 15px;
+		}
+		
+		#active-filters-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 5px;
+		}
+		
+		.active-filter {
+			display: inline-flex;
+			align-items: center;
+			background-color: var(--bg-light);
+			border: 1px solid var(--border-color);
+			padding: 4px 8px;
+			border-radius: 4px;
+			font-size: 0.85rem;
+		}
+		
+		.remove-filter {
+			margin-left: 5px;
+			cursor: pointer;
+		}
+		
+		.reset-btn {
+			background-color: var(--bg-light);
+			border: 1px solid var(--border-color);
+			padding: 6px 12px;
+			border-radius: 4px;
+			font-size: 0.85rem;
+			cursor: pointer;
+			transition: all 0.2s;
+		}
+		
+		.reset-btn:hover {
+			background-color: var(--bg-hover);
+		}
+		
+		/* View Modes */
+		.view-mode {
+			display: none;
+		}
+		
+		.view-mode.active {
+			display: block;
+		}
+		
+		/* Card View (default) */
 		.event-list {
 			display: grid;
 			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -384,6 +611,104 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 
 		.website-link:hover {
 			background-color: var(--primary-dark);
+		}
+		
+		/* Days View */
+		.day-group {
+			margin-bottom: 40px;
+		}
+		
+		.day-header {
+			background-color: var(--primary-light);
+			color: var(--primary-dark);
+			padding: 10px 20px;
+			border-radius: 8px;
+			margin-bottom: 15px;
+		}
+		
+		.day-events {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+		}
+		
+		.day-event {
+			background-color: var(--bg-light);
+			border-radius: 8px;
+			overflow: hidden;
+			box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s, box-shadow 0.3s;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			padding: 20px;
+		}
+		
+		.day-event:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+		}
+		
+		.day-event-link {
+			text-decoration: none;
+			color: inherit;
+			flex: 1;
+		}
+		
+		.day-event-content {
+			display: flex;
+			flex-direction: column;
+		}
+		
+		.day-event-title {
+			color: var(--primary);
+			font-size: 1.2rem;
+			margin-bottom: 5px;
+			display: flex;
+			align-items: center;
+		}
+		
+		.day-indicator {
+			background-color: var(--primary-light);
+			color: var(--primary-dark);
+			font-size: 0.8rem;
+			padding: 2px 8px;
+			border-radius: 50px;
+			margin-left: 10px;
+		}
+		
+		.day-event-description {
+			font-size: 0.95rem;
+			color: var(--text-base);
+		}
+		
+		.day-website-link {
+			background-color: var(--primary);
+			color: white;
+			padding: 8px 16px;
+			border-radius: 4px;
+			font-size: 0.9rem;
+			font-weight: 500;
+			transition: background-color 0.3s;
+			white-space: nowrap;
+			margin-left: 20px;
+		}
+		
+		.day-website-link:hover {
+			background-color: var(--primary-dark);
+		}
+		
+		.no-results {
+			text-align: center;
+			background-color: var(--bg-light);
+			padding: 30px;
+			border-radius: 8px;
+			margin-top: 20px;
+		}
+		
+		.no-results p {
+			margin-bottom: 15px;
+			color: var(--text-light);
 		}
 
 		/* TBC Section */
@@ -511,4 +836,288 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			}
 		}
 	</style>
+
+	<script>
+		// Wait for the DOM to be fully loaded
+		document.addEventListener('DOMContentLoaded', function() {
+			// Get elements
+			const cardViewBtn = document.getElementById('card-view-btn');
+			const dayViewBtn = document.getElementById('day-view-btn');
+			const cardView = document.getElementById('card-view');
+			const dayView = document.getElementById('day-view');
+			const dayBtns = document.querySelectorAll('.day-btn');
+			const tagBtns = document.querySelectorAll('.tag-btn');
+			const resetFiltersBtn = document.getElementById('reset-filters');
+			const resetFiltersInlineBtn = document.getElementById('reset-filters-inline');
+			const resetFiltersDayInlineBtn = document.getElementById('reset-filters-day-inline');
+			const activeFiltersList = document.getElementById('active-filters-list');
+			const noResults = document.getElementById('no-results');
+			const noDayResults = document.getElementById('no-day-results');
+			
+			// Initial state
+			let activeView = 'card';
+			let activeDay = 'all';
+			let activeTags = [];
+			
+			// Toggle view mode
+			cardViewBtn.addEventListener('click', function() {
+				setViewMode('card');
+			});
+			
+			dayViewBtn.addEventListener('click', function() {
+				setViewMode('day');
+			});
+			
+			// Set active view mode
+			function setViewMode(mode) {
+				activeView = mode;
+				
+				// Update UI
+				if (mode === 'card') {
+					cardViewBtn.classList.add('active');
+					cardViewBtn.setAttribute('aria-pressed', 'true');
+					dayViewBtn.classList.remove('active');
+					dayViewBtn.setAttribute('aria-pressed', 'false');
+					
+					cardView.classList.add('active');
+					dayView.classList.remove('active');
+				} else {
+					dayViewBtn.classList.add('active');
+					dayViewBtn.setAttribute('aria-pressed', 'true');
+					cardViewBtn.classList.remove('active');
+					cardViewBtn.setAttribute('aria-pressed', 'false');
+					
+					dayView.classList.add('active');
+					cardView.classList.remove('active');
+				}
+				
+				// Apply filters to the new view
+				applyFilters();
+			}
+			
+			// Day filter buttons
+			dayBtns.forEach(btn => {
+				btn.addEventListener('click', function() {
+					const day = this.dataset.day;
+					
+					// Update active day
+					activeDay = day;
+					
+					// Update UI
+					dayBtns.forEach(btn => btn.classList.remove('active'));
+					this.classList.add('active');
+					
+					// Update active filters list
+					updateActiveFilters();
+					
+					// Apply filters
+					applyFilters();
+				});
+			});
+			
+			// Tag filter buttons
+			tagBtns.forEach(btn => {
+				btn.addEventListener('click', function() {
+					const tag = this.dataset.tag;
+					
+					// Toggle tag in active tags
+					const tagIndex = activeTags.indexOf(tag);
+					if (tagIndex === -1) {
+						activeTags.push(tag);
+						this.classList.add('active');
+					} else {
+						activeTags.splice(tagIndex, 1);
+						this.classList.remove('active');
+					}
+					
+					// Update active filters list
+					updateActiveFilters();
+					
+					// Apply filters
+					applyFilters();
+				});
+			});
+			
+			// Reset filters
+			function resetFilters() {
+				// Reset day filter
+				activeDay = 'all';
+				dayBtns.forEach(btn => {
+					if (btn.dataset.day === 'all') {
+						btn.classList.add('active');
+					} else {
+						btn.classList.remove('active');
+					}
+				});
+				
+				// Reset tag filters
+				activeTags = [];
+				tagBtns.forEach(btn => btn.classList.remove('active'));
+				
+				// Update active filters list
+				updateActiveFilters();
+				
+				// Apply filters
+				applyFilters();
+			}
+			
+			// Add event listeners to reset buttons
+			if (resetFiltersBtn) resetFiltersBtn.addEventListener('click', resetFilters);
+			if (resetFiltersInlineBtn) resetFiltersInlineBtn.addEventListener('click', resetFilters);
+			if (resetFiltersDayInlineBtn) resetFiltersDayInlineBtn.addEventListener('click', resetFilters);
+			
+			// Update active filters display
+			function updateActiveFilters() {
+				// Clear current filters
+				activeFiltersList.innerHTML = '';
+				
+				// Add day filter if not 'all'
+				if (activeDay !== 'all') {
+					const dayBtn = document.querySelector(`.day-btn[data-day="${activeDay}"]`);
+					const dayLabel = dayBtn ? dayBtn.textContent : activeDay;
+					
+					const filterTag = document.createElement('span');
+					filterTag.className = 'active-filter';
+					filterTag.innerHTML = `Day: ${dayLabel} <span class="remove-filter">✕</span>`;
+					
+					const removeBtn = filterTag.querySelector('.remove-filter');
+					removeBtn.addEventListener('click', function() {
+						// Reset day filter to 'all'
+						activeDay = 'all';
+						dayBtns.forEach(btn => {
+							if (btn.dataset.day === 'all') {
+								btn.classList.add('active');
+							} else {
+								btn.classList.remove('active');
+							}
+						});
+						
+						// Update filters
+						updateActiveFilters();
+						applyFilters();
+					});
+					
+					activeFiltersList.appendChild(filterTag);
+				}
+				
+				// Add tag filters
+				activeTags.forEach(tag => {
+					const filterTag = document.createElement('span');
+					filterTag.className = 'active-filter';
+					filterTag.innerHTML = `${tag} <span class="remove-filter">✕</span>`;
+					
+					const removeBtn = filterTag.querySelector('.remove-filter');
+					removeBtn.addEventListener('click', function() {
+						// Remove tag from active tags
+						const tagIndex = activeTags.indexOf(tag);
+						if (tagIndex !== -1) {
+							activeTags.splice(tagIndex, 1);
+						}
+						
+						// Update tag button state
+						const tagBtn = document.querySelector(`.tag-btn[data-tag="${tag}"]`);
+						if (tagBtn) {
+							tagBtn.classList.remove('active');
+						}
+						
+						// Update filters
+						updateActiveFilters();
+						applyFilters();
+					});
+					
+					activeFiltersList.appendChild(filterTag);
+				});
+			}
+			
+			// Apply all active filters
+			function applyFilters() {
+				if (activeView === 'card') {
+					// Filter events in card view
+					const eventBoxes = document.querySelectorAll('#card-view .event-box');
+					let visibleCount = 0;
+					
+					eventBoxes.forEach(box => {
+						const date = box.dataset.date || '';
+						const tags = (box.dataset.tags || '').split(',').filter(tag => tag.trim() !== '');
+						
+						// Check if event matches filters
+						const matchesDay = activeDay === 'all' || date === activeDay;
+						const matchesTags = activeTags.length === 0 || 
+							activeTags.every(tag => tags.includes(tag));
+						
+						// Show/hide based on filter match
+						if (matchesDay && matchesTags) {
+							box.style.display = '';
+							visibleCount++;
+						} else {
+							box.style.display = 'none';
+						}
+					});
+					
+					// Show "no results" message if no events match
+					if (visibleCount === 0) {
+						noResults.style.display = 'block';
+					} else {
+						noResults.style.display = 'none';
+					}
+				} else {
+					// Filter events in day view
+					const dayGroups = document.querySelectorAll('#day-view .day-group');
+					let visibleDayGroups = 0;
+					
+					dayGroups.forEach(group => {
+						const date = group.dataset.date || '';
+						
+						// Check if day matches filter
+						const matchesDay = activeDay === 'all' || date === activeDay;
+						
+						if (matchesDay) {
+							// Show the day group
+							group.style.display = '';
+							
+							// Filter events within this day
+							const events = group.querySelectorAll('.day-event');
+							let visibleEvents = 0;
+							
+							events.forEach(event => {
+								const tags = (event.dataset.tags || '').split(',').filter(tag => tag.trim() !== '');
+								
+								// Check if event matches tag filters
+								const matchesTags = activeTags.length === 0 || 
+									activeTags.every(tag => tags.includes(tag));
+								
+								// Show/hide based on tag match
+								if (matchesTags) {
+									event.style.display = '';
+									visibleEvents++;
+								} else {
+									event.style.display = 'none';
+								}
+							});
+							
+							// If no events are visible in this day, hide the day group
+							if (visibleEvents === 0) {
+								group.style.display = 'none';
+							} else {
+								visibleDayGroups++;
+							}
+						} else {
+							group.style.display = 'none';
+						}
+					});
+					
+					// Show "no results" message if no day groups match
+					if (visibleDayGroups === 0) {
+						noDayResults.style.display = 'block';
+					} else {
+						noDayResults.style.display = 'none';
+					}
+				}
+			}
+			
+			// Initialize
+			updateActiveFilters();
+			applyFilters();
+		});
+	</script>
 </BaseLayout>
