@@ -84,7 +84,10 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 				<div class="contribute-option">
 					<h3>Add Your Event</h3>
 					<p>Want to organize an event during Czech Crypto Week? Submit your event details through a GitHub pull request or contact us directly.</p>
-					<a href="mailto:ethczech@gmail.com" class="contribute-button">Contact Us</a>
+					<div class="coming-soon-form">
+						<p class="form-note">✨ Event submission form coming soon! ✨</p>
+						<a href="mailto:ethczech@gmail.com" class="contribute-button">Contact Us</a>
+					</div>
 				</div>
 				
 				<div class="contribute-option">
@@ -94,6 +97,7 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 				</div>
 			</div>
 		</div>
+	</section>
 
 	<style>
 		/* Hero Section */
@@ -287,6 +291,92 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 
 			.event-list {
 				grid-template-columns: 1fr;
+			}
+		}
+		
+		/* Contribute Section */
+		.contribute-section {
+			margin: 60px 0;
+			padding: 40px;
+			background-color: var(--bg-light);
+			border-radius: 10px;
+		}
+		
+		.contribute-section h2 {
+			text-align: center;
+			margin-bottom: 30px;
+		}
+		
+		.contribute-content > p {
+			text-align: center;
+			max-width: 600px;
+			margin: 0 auto 40px;
+			font-size: 1.1rem;
+		}
+		
+		.contribute-options {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 30px;
+		}
+		
+		.contribute-option {
+			background-color: white;
+			padding: 30px;
+			border-radius: 8px;
+			box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+			display: flex;
+			flex-direction: column;
+		}
+		
+		.contribute-option h3 {
+			color: var(--primary);
+			margin-bottom: 15px;
+		}
+		
+		.contribute-option p {
+			margin-bottom: 20px;
+			flex-grow: 1;
+		}
+		
+		.contribute-button {
+			display: inline-block;
+			background-color: var(--primary);
+			color: white;
+			padding: 10px 20px;
+			border-radius: 50px;
+			font-weight: 500;
+			transition: transform 0.2s, background-color 0.2s;
+			text-align: center;
+			margin-top: auto;
+		}
+		
+		.contribute-button:hover {
+			background-color: var(--primary-dark);
+			transform: translateY(-2px);
+		}
+		
+		.coming-soon-form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		
+		.form-note {
+			background-color: #f8f4ff;
+			color: #6b46c1;
+			padding: 10px 15px;
+			border-radius: 6px;
+			font-size: 0.9rem;
+			font-weight: 500;
+			margin-bottom: 15px;
+			text-align: center;
+			width: 100%;
+		}
+		
+		@media (max-width: 768px) {
+			.contribute-section {
+				padding: 30px 20px;
 			}
 		}
 	</style>
