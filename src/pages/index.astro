@@ -13,9 +13,12 @@ try {
 	events = fallbackEvents;
 }
 
-// Split events into confirmed and TBC
-const confirmedEvents = events.filter(event => event.confirmed !== false);
+// More explicit filtering logic to ensure proper categorization
+const confirmedEvents = events.filter(event => event.confirmed === true);
 const tbcEvents = events.filter(event => event.confirmed === false);
+
+console.log("Confirmed events:", confirmedEvents.map(e => e.name));
+console.log("TBC events:", tbcEvents.map(e => e.name));
 ---
 
 <BaseLayout title="Czech Crypto Week 2025">
