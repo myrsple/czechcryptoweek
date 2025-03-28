@@ -1,5 +1,5 @@
 ---
-import { fallbackEvents } from '../data/fallbackEvents.js';
+import { fallbackEvents } from '../data/fallbackEvents';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Fetch event data from GitHub repository with error handling
@@ -10,6 +10,7 @@ async function fetchEventData() {
 		
 		if (!response.ok) {
 			console.error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+			console.log("Using fallback events:", fallbackEvents.map(e => e.name));
 			return fallbackEvents;
 		}
 		
@@ -18,6 +19,7 @@ async function fetchEventData() {
 		return data;
 	} catch (error) {
 		console.error("Error fetching event data:", error);
+		console.log("Using fallback events due to error:", fallbackEvents.map(e => e.name));
 		return fallbackEvents;
 	}
 }
@@ -67,6 +69,11 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 function processEvents(events) {
 	const confirmed = events.filter(event => event.confirmed);
 	const tbc = events.filter(event => !event.confirmed);
+	
+	// Debug events
+	console.log("All events:", events.map(e => e.name));
+	console.log("Confirmed events:", confirmed.map(e => e.name));
+	console.log("TBC events:", tbc.map(e => e.name));
 
 	// Get unique dates for filtering
 	const uniqueDatesMap = new Map();
@@ -311,6 +318,9 @@ const { confirmedEvents, tbcEvents, uniqueDates, uniqueTags, eventsByDate } = pr
 								Visit Official Website
 							</a>
 						)}
+						
+						{/* Debug info */}
+						{event.name === 'Urbe Campus' && <div style="display: none;">Urbe Campus is here!</div>}
 					</li>
 				))}
 			</ul>
