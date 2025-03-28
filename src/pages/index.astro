@@ -193,17 +193,22 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 			color: var(--primary);
 			font-size: 1.4rem;
 			margin-bottom: 10px;
+			min-height: 3.5rem;
+			display: flex;
+			align-items: flex-start;
 		}
 
 		.event-date {
 			color: var(--text-light);
 			font-size: 0.95rem;
 			margin-bottom: 15px;
+			flex-shrink: 0;
 		}
 
 		.event-description {
 			margin-bottom: 20px;
 			line-height: 1.5;
+			flex-grow: 1;
 		}
 
 		.website-link {

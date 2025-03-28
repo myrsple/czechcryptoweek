@@ -28,7 +28,7 @@ export const fallbackEvents = [
   },
   {
     id: "protolayers",
-    name: "ProtoLayers Ethereum R&D Event",
+    name: "ProtoLayers Conference",
     date: "May 26, 2025",
     short_description: "An Ethereum research and development focused event by ProtoLayers.",
     website: "https://protolayers.dev",
