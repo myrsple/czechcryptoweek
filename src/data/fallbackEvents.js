@@ -53,7 +53,7 @@ export const fallbackEvents = [
     name: "EthCzech Community Meetup",
     date: "May 29, 2025",
     short_description: "Join the local Ethereum community for networking and discussions.",
-    website: "https://ethczech.com",
+    website: "https://lu.ma/user/ethczech",
     confirmed: true,
     location: "Paralelní Polis, Prague, Czech Republic",
     description: "Join the local Ethereum community for an evening of networking, short presentations, and discussions. This is a great opportunity to meet like-minded enthusiasts, developers, and entrepreneurs who are building the future of Web3 in the Czech Republic and beyond.",
