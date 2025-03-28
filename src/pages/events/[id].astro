@@ -72,6 +72,24 @@ if (!event) {
           Visit Official Website
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
         </a>
+
+        {/* Special links for ETHPrague */}
+        {id === "ethprague2025" && (
+          <div class="action-links">
+            <a href="https://tix.ducttape.events/dt/ethpragueconf25/" target="_blank" rel="noopener noreferrer" class="action-link tickets-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6"></path><path d="M12 11.5V16"></path><path d="M12 8v.5"></path><path d="M18 6L6 6"></path><path d="M15 2L9 2"></path><path d="M20 6v6l-4-2-4 2-4-2-4 2V6"></path></svg>
+              Buy Tickets
+            </a>
+            <a href="https://pwn.typeform.com/to/MT4Kv8lH" target="_blank" rel="noopener noreferrer" class="action-link volunteer-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              Volunteer
+            </a>
+            <a href="https://ethprague.com/deck" target="_blank" rel="noopener noreferrer" class="action-link sponsor-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+              Sponsor
+            </a>
+          </div>
+        )}
       </div>
       
       {(event.venue || event.prizes) && (
@@ -202,6 +220,43 @@ if (!event) {
     
     .venue-address {
       color: var(--text-light);
+    }
+    
+    /* Action links for ETHPrague */
+    .action-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 25px 0 40px;
+    }
+    
+    .action-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 15px;
+      border-radius: 6px;
+      font-weight: 500;
+      color: white;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    
+    .action-link:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+    
+    .tickets-link {
+      background-color: #34c759;
+    }
+    
+    .volunteer-link {
+      background-color: #5856d6;
+    }
+    
+    .sponsor-link {
+      background-color: #ff9500;
     }
     
     @media (max-width: 768px) {
