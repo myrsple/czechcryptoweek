@@ -74,8 +74,16 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 	<section id="events" class="events-section">
 		<h2>Confirmed Events</h2>
 		
+		<!-- View Toggle -->
+		<div class="view-toggle-container">
+			<div class="view-toggle">
+				<button class="view-toggle-button" data-view="cards">Card View</button>
+				<button class="view-toggle-button selected" data-view="days">Days View</button>
+			</div>
+		</div>
+		
 		<!-- Day Filter Buttons -->
-		<div class="filter-section">
+		<div class="filter-section day-filter-section">
 			<h3>Filter by Day</h3>
 			<div class="day-filter">
 				<button class="filter-button day-button selected" data-day="all">All Days</button>
@@ -98,7 +106,7 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 		</div>
 		
 		<!-- Events Grouped by Date -->
-		<div class="events-container">
+		<div class="events-container days-view">
 			{uniqueDates.map(dateObj => (
 				<div class="date-group" data-date={dateObj.date}>
 					<h3 class="date-heading">
@@ -135,6 +143,39 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 					</ul>
 				</div>
 			))}
+			
+			<div class="no-results hidden">
+				<p>No events match your selected filters. Please try different filter options.</p>
+			</div>
+		</div>
+		
+		<!-- Original Card View -->
+		<div class="events-container cards-view hidden">
+			<ul class="event-list">
+				{confirmedEvents.map(event => (
+					<li class="event-box" data-tags={event.tags?.join(',')} data-date={event.dateISO}>
+						<a href={`/events/${event.id}`} class="event-link">
+							<div class="event-content">
+								<h3 class="event-title">{event.name}</h3>
+								<p class="event-date">{event.date}</p>
+								
+								<div class="tags-list">
+									{event.tags?.map(tag => (
+										<span class="tag">{tag}</span>
+									))}
+								</div>
+								
+								<p class="event-description">{event.short_description}</p>
+							</div>
+						</a>
+						{event.website && (
+							<a href={event.website} target="_blank" rel="noopener noreferrer" class="website-link" onclick="event.stopPropagation();">
+								Visit Official Website
+							</a>
+						)}
+					</li>
+				))}
+			</ul>
 			
 			<div class="no-results hidden">
 				<p>No events match your selected filters. Please try different filter options.</p>
@@ -289,6 +330,41 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 		
 		.tag-button {
 			font-size: 0.85rem;
+		}
+		
+		/* View Toggle */
+		.view-toggle-container {
+			display: flex;
+			justify-content: center;
+			margin: 30px 0 15px;
+		}
+		
+		.view-toggle {
+			display: inline-flex;
+			background-color: #f0f0f0;
+			border-radius: 30px;
+			padding: 4px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+		}
+		
+		.view-toggle-button {
+			padding: 8px 20px;
+			border: none;
+			background-color: transparent;
+			border-radius: 25px;
+			font-size: 0.95rem;
+			font-weight: 500;
+			cursor: pointer;
+			transition: all 0.2s ease;
+		}
+		
+		.view-toggle-button:hover {
+			background-color: rgba(0, 0, 0, 0.05);
+		}
+		
+		.view-toggle-button.selected {
+			background-color: white;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		}
 		
 		/* Events Container */
@@ -552,12 +628,45 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 		// Initialize filter state
 		let selectedDay = null;
 		let selectedTags = new Set();
+		let currentView = 'days'; // Default view is 'days'
 		
 		document.addEventListener('DOMContentLoaded', () => {
 			const dayButtons = document.querySelectorAll('.day-button');
 			const tagButtons = document.querySelectorAll('.tag-button');
 			const dateGroups = document.querySelectorAll('.date-group');
-			const noResults = document.querySelector('.no-results');
+			const dayFilterSection = document.querySelector('.day-filter-section');
+			const daysView = document.querySelector('.days-view');
+			const cardsView = document.querySelector('.cards-view');
+			const viewToggleButtons = document.querySelectorAll('.view-toggle-button');
+			const dayViewNoResults = document.querySelector('.days-view .no-results');
+			const cardViewNoResults = document.querySelector('.cards-view .no-results');
+			
+			// View toggle buttons click handler
+			viewToggleButtons.forEach(button => {
+				button.addEventListener('click', () => {
+					// Update UI - highlight selected button
+					viewToggleButtons.forEach(btn => btn.classList.remove('selected'));
+					button.classList.add('selected');
+					
+					// Get selected view
+					const selectedView = button.dataset.view;
+					
+					// Toggle view visibility
+					if (selectedView === 'days') {
+						daysView.classList.remove('hidden');
+						cardsView.classList.add('hidden');
+						dayFilterSection.classList.remove('hidden');
+						currentView = 'days';
+					} else { // cards view
+						daysView.classList.add('hidden');
+						cardsView.classList.remove('hidden');
+						dayFilterSection.classList.toggle('hidden', selectedDay === null);
+						currentView = 'cards';
+						// Apply filters to card view
+						applyCardViewFilters();
+					}
+				});
+			});
 			
 			// Day filter button click handler
 			dayButtons.forEach(button => {
@@ -569,8 +678,12 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 					// Update filter state
 					selectedDay = button.dataset.day === 'all' ? null : button.dataset.day;
 					
-					// Apply filters
-					applyFilters(dateGroups, noResults);
+					// Apply filters based on current view
+					if (currentView === 'days') {
+						applyDayViewFilters(dateGroups, dayViewNoResults);
+					} else {
+						applyCardViewFilters();
+					}
 				});
 			});
 			
@@ -588,59 +701,97 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 						selectedTags.add(tag);
 					}
 					
-					// Apply filters
-					applyFilters(dateGroups, noResults);
+					// Apply filters based on current view
+					if (currentView === 'days') {
+						applyDayViewFilters(dateGroups, dayViewNoResults);
+					} else {
+						applyCardViewFilters();
+					}
 				});
 			});
-		});
-		
-		// Filter application logic
-		function applyFilters(dateGroups, noResults) {
-			let hasVisibleEvents = false;
 			
-			dateGroups.forEach(group => {
-				// First filter by day
-				const dayMatches = !selectedDay || group.dataset.date === selectedDay;
+			// Filter application logic for day view
+			function applyDayViewFilters(dateGroups, noResults) {
+				let hasVisibleEvents = false;
 				
-				if (dayMatches) {
-					group.classList.remove('hidden');
+				dateGroups.forEach(group => {
+					// First filter by day
+					const dayMatches = !selectedDay || group.dataset.date === selectedDay;
 					
-					// Then filter events within this day by tags
-					const eventBoxes = group.querySelectorAll('.event-box');
-					let hasVisibleEventsInGroup = false;
-					
-					eventBoxes.forEach(box => {
-						// Get event tags
-						const eventTags = box.dataset.tags ? box.dataset.tags.split(',') : [];
+					if (dayMatches) {
+						group.classList.remove('hidden');
 						
-						// Check if event should be visible based on selected tags
-						const tagMatches = selectedTags.size === 0 || 
-							[...selectedTags].some(tag => eventTags.includes(tag));
+						// Then filter events within this day by tags
+						const eventBoxes = group.querySelectorAll('.event-box');
+						let hasVisibleEventsInGroup = false;
 						
-						if (tagMatches) {
-							box.classList.remove('hidden');
-							hasVisibleEventsInGroup = true;
-							hasVisibleEvents = true;
-						} else {
-							box.classList.add('hidden');
+						eventBoxes.forEach(box => {
+							// Get event tags
+							const eventTags = box.dataset.tags ? box.dataset.tags.split(',') : [];
+							
+							// Check if event should be visible based on selected tags
+							const tagMatches = selectedTags.size === 0 || 
+								[...selectedTags].some(tag => eventTags.includes(tag));
+							
+							if (tagMatches) {
+								box.classList.remove('hidden');
+								hasVisibleEventsInGroup = true;
+								hasVisibleEvents = true;
+							} else {
+								box.classList.add('hidden');
+							}
+						});
+						
+						// If no events are visible in this group, hide the whole group
+						if (!hasVisibleEventsInGroup) {
+							group.classList.add('hidden');
 						}
-					});
-					
-					// If no events are visible in this group, hide the whole group
-					if (!hasVisibleEventsInGroup) {
+					} else {
 						group.classList.add('hidden');
 					}
+				});
+				
+				// Show "no results" message if needed
+				if (hasVisibleEvents) {
+					noResults.classList.add('hidden');
 				} else {
-					group.classList.add('hidden');
+					noResults.classList.remove('hidden');
 				}
-			});
-			
-			// Show "no results" message if needed
-			if (hasVisibleEvents) {
-				noResults.classList.add('hidden');
-			} else {
-				noResults.classList.remove('hidden');
 			}
-		}
+			
+			// Filter application logic for card view
+			function applyCardViewFilters() {
+				const eventBoxes = cardsView.querySelectorAll('.event-box');
+				let hasVisibleEvents = false;
+				
+				eventBoxes.forEach(box => {
+					// Get event data
+					const eventTags = box.dataset.tags ? box.dataset.tags.split(',') : [];
+					const eventDate = box.dataset.date;
+					
+					// Check day filter
+					const dayMatches = !selectedDay || eventDate === selectedDay;
+					
+					// Check tag filter
+					const tagMatches = selectedTags.size === 0 || 
+						[...selectedTags].some(tag => eventTags.includes(tag));
+					
+					// Show/hide based on filters
+					if (dayMatches && tagMatches) {
+						box.classList.remove('hidden');
+						hasVisibleEvents = true;
+					} else {
+						box.classList.add('hidden');
+					}
+				});
+				
+				// Show "no results" message if needed
+				if (hasVisibleEvents) {
+					cardViewNoResults.classList.add('hidden');
+				} else {
+					cardViewNoResults.classList.remove('hidden');
+				}
+			}
+		});
 	</script>
 </BaseLayout>
