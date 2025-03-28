@@ -1,7 +1,45 @@
 ---
-// Use GitHub raw URL for deployed site
-const response = await fetch('https://raw.githubusercontent.com/EthCzech/czechcryptoweek/main/events/index.json');
-const events = await response.json();
+// Use GitHub raw URL for deployed site with error handling
+let events = [];
+try {
+	const response = await fetch('https://raw.githubusercontent.com/EthCzech/czechcryptoweek/main/events/index.json');
+	events = await response.json();
+} catch (error) {
+	console.error('Error fetching events:', error);
+	// Fallback data if fetch fails
+	events = [
+		{
+			"id": "ethprague2025",
+			"name": "ETHPrague 2025",
+			"date": "May 27-29, 2025",
+			"short_description": "A conference focused on Ethereum development and innovation."
+		},
+		{
+			"id": "ethglobal",
+			"name": "ETHGlobal Hackathon",
+			"date": "May 30 - June 1, 2025",
+			"short_description": "A global hackathon bringing together Ethereum developers to build projects."
+		},
+		{
+			"id": "protolayers",
+			"name": "ProtoLayers Ethereum R&D Event",
+			"date": "May 26, 2025",
+			"short_description": "An Ethereum research and development focused event by ProtoLayers."
+		},
+		{
+			"id": "howtodao",
+			"name": "How to DAO Workshop",
+			"date": "May 28, 2025",
+			"short_description": "Learn how to create and manage DAOs with Jan Puncar & Kevin Owocki."
+		},
+		{
+			"id": "meetup",
+			"name": "EthCzech Community Meetup",
+			"date": "May 29, 2025",
+			"short_description": "Join the local Ethereum community for networking and discussions."
+		}
+	];
+}
 ---
 
 <html lang="en">
