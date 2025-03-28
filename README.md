@@ -1,111 +1,95 @@
-# Czech Crypto Week
-## May 26 - June 1, 2025 • Prague, Czech Republic
+# Czech Crypto Week Website
 
-## What is Czech Crypto Week?
-Czech Crypto Week is a week-long blockchain gathering in Prague that brings together developers, entrepreneurs, investors, and enthusiasts from across the world. The event leverages the Czech Republic's favorable regulatory environment and growing blockchain ecosystem to showcase regional innovation and facilitate international collaboration.
+This is the website for Czech Crypto Week, a blockchain gathering in Prague. The site uses Astro framework and is deployed on Netlify.
 
-https://x.com/CzechCryptoWeek
+## 🚀 Getting Started
 
-## When is it?
-**May 26 - June 1, 2025**
+### Prerequisites
+- Node.js 18 or higher
 
-Czech Crypto Week will align with:
-* [ETHPrague Conference](https://ethprague.com/) (27 - 29 May)
-* [ETHGlobal hackathon](https://ethglobal.com/events/prague) (30 May - 1 June)
+### Local Development
 
-## How to Contribute
-
-### Adding Your Event
-
-Anyone can organize a side-event during Czech Crypto Week. Here's how to add your event:
-
-1. **Fork the repository**
-   * Click the "Fork" button at the top right of [this repository](https://github.com/EthCzech/czechcryptoweek)
-
-2. **Clone your fork**
-   ```
-   git clone https://github.com/YOUR-USERNAME/czechcryptoweek.git
+1. Clone the repository
+   ```bash
+   git clone https://github.com/EthCzech/czechcryptoweek.git
    cd czechcryptoweek
    ```
 
-3. **Add your event information**
-   * For a confirmed event:
-     * Add your event to `events/index.json`
-     * Create a folder for your event at `events/YOUR-EVENT-ID/`
-     * Add an `info.json` file with your event details (see template below)
-   
-   * For a TBC event:
-     * Simply add a minimal entry to `events/index.json` with just the name and `"confirmed": false`
+2. Install dependencies
+   ```bash
+   npm install
+   ```
 
-4. **Create a pull request**
-   * Commit your changes:
-     ```
-     git add .
-     git commit -m "Add EVENT_NAME event"
-     git push origin main
-     ```
-   * Go to your fork on GitHub and click "Pull request" to submit your event
+3. Start the development server
+   ```bash
+   npm run dev
+   ```
+   The site will be available at http://localhost:4321
 
-### Event Template
+## 🏗️ Project Structure
 
-Here's a template for your `info.json` file:
-
-```json
-{
-  "id": "your-event-id",
-  "name": "Your Event Name",
-  "date": "May 26, 2025",
-  "short_description": "A brief description of your event (1-2 sentences)",
-  "website": "https://your-event-website.com",
-  "confirmed": true,
-  "location": "Venue Name, Prague, Czech Republic",
-  "description": "A longer description of your event. Include details about the focus, target audience, and what attendees can expect.",
-  "organizers": ["Your Name", "Your Organization"],
-  "venue": {
-    "name": "Venue Name",
-    "address": "Full venue address"
-  },
-  "prizes": "Optional - if your event has prizes, list them here"
-}
+```
+/
+├── events/                  # Event data in JSON format
+│   ├── index.json           # Main event listing
+│   └── [event-id]/          # Individual event details
+├── public/                  # Static assets
+│   └── favicon.svg          # Site favicon
+├── src/
+│   ├── data/                # Fallback event data
+│   ├── layouts/             # Layout components
+│   └── pages/               # Page components and routes
+│       ├── index.astro      # Homepage
+│       └── events/          # Event detail pages
+└── package.json             # Project dependencies
 ```
 
-### Website Contributions
+## 📚 Working with Event Data
 
-Want to improve the Czech Crypto Week website?
+Events are stored in two places:
+- `events/index.json` - Main listing of all events
+- `events/[event-id]/info.json` - Detailed information for each event
 
-1. Fork and clone the repository as described above
-2. Make your changes to the code
-3. Test locally with `npm run dev`
-4. Submit a pull request with your improvements
+The site will attempt to fetch events from the GitHub repository's main branch. If that fails, it will use fallback data from `src/data/fallbackEvents.js`.
 
-## Potential Side Events
+## 🚢 Deployment
 
-| Organization/Project | Event Type | Contact Person |
-|----------------------|------------|----------------|
-| ProtoLayers | Builder Conference | Damsky |
-| How to DAO | Workshop | Jan Puncar & Kevin Owocki |
-| Funding the Commons | Meetup | Tereza Bizkova |
-| Running Club Prague | Community Activity | TBC |
-| Base | Base Developer Meetup | EthCzech |
-| EthCzech | Community Meetup | TBC |
-| Ackee | Happy Hour | TBC |
-| BeerFi | Developer Meetup | TBC |
-| Web3PrivacyNow | Privacy Meetup | TBC |
-| OnlyDust | Open Source Meetup | TBC |
-| Logos |  Meetup | TBC |
-| Dabl.Club |  Workshop/Bootcamp | TBC |
-| ZKHack |  Meetup | TBC |
-| Longevity |  Meetup | TBC |
-| Polkadot |  Meetup | TBC |
+This site is automatically deployed to Netlify when changes are pushed to the main branch.
 
-*TBC - To Be Confirmed
+### Manual Deployment
 
-## Get Involved
-Interested in organizing a side event? Contact us at ethczech@gmail.com
+1. Build the site
+   ```bash
+   npm run build
+   ```
 
-## Contact
+2. The built site will be in the `dist/` directory, which can be deployed to any static hosting service.
+
+### Environment Variables
+
+No environment variables are required for basic functionality.
+
+## 🧞 Commands
+
+| Command                | Action                                           |
+| :--------------------- | :----------------------------------------------- |
+| `npm install`          | Installs dependencies                            |
+| `npm run dev`          | Starts local dev server at `localhost:4321`      |
+| `npm run build`        | Build your production site to `./dist/`          |
+| `npm run preview`      | Preview your build locally before deploying      |
+| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
+
+## 📝 Contributing
+
+See the [GitHub repository](https://github.com/EthCzech/czechcryptoweek) for how to contribute to this project.
+
+## 📞 Contact
+
+For technical issues with the website, please open an issue on GitHub.
+
+For general inquiries about Czech Crypto Week:
 * Twitter: [https://x.com/CzechCryptoWeek](https://x.com/CzechCryptoWeek)
-* Mail: ethczech@gmail.com
+* Email: ethczech@gmail.com
 
 ---
 
