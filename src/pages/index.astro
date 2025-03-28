@@ -77,13 +77,13 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 		<!-- View Toggle -->
 		<div class="view-toggle-container">
 			<div class="view-toggle">
-				<button class="view-toggle-button" data-view="cards">Card View</button>
-				<button class="view-toggle-button selected" data-view="days">Days View</button>
+				<button class="view-toggle-button selected" data-view="cards">Card View</button>
+				<button class="view-toggle-button" data-view="days">Days View</button>
 			</div>
 		</div>
 		
 		<!-- Day Filter Buttons -->
-		<div class="filter-section day-filter-section">
+		<div class="filter-section day-filter-section hidden">
 			<h3>Filter by Day</h3>
 			<div class="day-filter">
 				<button class="filter-button day-button selected" data-day="all">All Days</button>
@@ -106,7 +106,7 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 		</div>
 		
 		<!-- Events Grouped by Date -->
-		<div class="events-container days-view">
+		<div class="events-container days-view hidden">
 			{uniqueDates.map(dateObj => (
 				<div class="date-group" data-date={dateObj.date}>
 					<h3 class="date-heading">
@@ -150,9 +150,13 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 		</div>
 		
 		<!-- Original Card View -->
-		<div class="events-container cards-view hidden">
+		<div class="events-container cards-view">
 			<ul class="event-list">
-				{confirmedEvents.map(event => (
+				{confirmedEvents.sort((a, b) => {
+					if (!a.dateISO) return 1;
+					if (!b.dateISO) return -1;
+					return new Date(a.dateISO) - new Date(b.dateISO);
+				}).map(event => (
 					<li class="event-box" data-tags={event.tags?.join(',')} data-date={event.dateISO}>
 						<a href={`/events/${event.id}`} class="event-link">
 							<div class="event-content">
@@ -628,7 +632,7 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 		// Initialize filter state
 		let selectedDay = null;
 		let selectedTags = new Set();
-		let currentView = 'days'; // Default view is 'days'
+		let currentView = 'cards'; // Default view is 'cards'
 		
 		document.addEventListener('DOMContentLoaded', () => {
 			const dayButtons = document.querySelectorAll('.day-button');
@@ -640,6 +644,17 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 			const viewToggleButtons = document.querySelectorAll('.view-toggle-button');
 			const dayViewNoResults = document.querySelector('.days-view .no-results');
 			const cardViewNoResults = document.querySelector('.cards-view .no-results');
+			
+			// Initialize view state
+			if (currentView === 'cards') {
+				daysView.classList.add('hidden');
+				cardsView.classList.remove('hidden');
+				dayFilterSection.classList.add('hidden');
+			} else {
+				daysView.classList.remove('hidden');
+				cardsView.classList.add('hidden');
+				dayFilterSection.classList.remove('hidden');
+			}
 			
 			// View toggle buttons click handler
 			viewToggleButtons.forEach(button => {
