@@ -1,0 +1,214 @@
+---
+const { title = "Czech Crypto Week", description = "A week of Ethereum and web3 events in Prague" } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>{title}</title>
+    <style is:global>
+      :root {
+        --primary: #0066cc;
+        --primary-dark: #004c99;
+        --secondary: #34d399;
+        --text: #333333;
+        --text-light: #666666;
+        --bg-light: #f9f9f9;
+        --bg-dark: #f0f0f0;
+      }
+      
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background-color: #ffffff;
+      }
+      
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+      
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+      
+      h1, h2, h3 {
+        color: var(--primary);
+        line-height: 1.2;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+      }
+      
+      ul {
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="container">
+          <a href="/" class="logo">Czech Crypto Week</a>
+          <div class="links">
+            <a href="/">Home</a>
+            <a href="/#events">Events</a>
+            <a href="https://twitter.com/czechcryptoweek" target="_blank" rel="noopener noreferrer">Twitter</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    
+    <main>
+      <slot />
+    </main>
+    
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Czech Crypto Week</h3>
+            <p>May 26 - June 1, 2025</p>
+            <p>Prague, Czech Republic</p>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Connect</h3>
+            <ul>
+              <li><a href="https://twitter.com/czechcryptoweek" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+              <li><a href="https://github.com/EthCzech/czechcryptoweek" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Organized by</h3>
+            <p>EthCzech Community</p>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; 2025 Czech Crypto Week. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    
+    <style>
+      /* Navbar Styles */
+      .navbar {
+        background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+        color: white;
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      
+      .logo {
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: white;
+      }
+      
+      .links {
+        display: flex;
+        gap: 20px;
+      }
+      
+      .links a {
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+      
+      .links a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      
+      /* Footer Styles */
+      footer {
+        background-color: var(--bg-dark);
+        padding: 40px 0 20px;
+        margin-top: 60px;
+      }
+      
+      footer .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        margin-bottom: 30px;
+      }
+      
+      .footer-section h3 {
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+      
+      .footer-section ul {
+        list-style: none;
+      }
+      
+      .footer-section li {
+        margin-bottom: 10px;
+      }
+      
+      .footer-section a:hover {
+        text-decoration: underline;
+      }
+      
+      .footer-bottom {
+        border-top: 1px solid #ddd;
+        padding-top: 20px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--text-light);
+      }
+      
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+      }
+    </style>
+  </body>
+</html> 

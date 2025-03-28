@@ -1,5 +1,6 @@
 ---
 import { fallbackEvents } from '../data/fallbackEvents.js';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Use GitHub raw URL for deployed site with error handling
 let events = [];
@@ -17,131 +18,234 @@ const confirmedEvents = events.filter(event => event.confirmed !== false);
 const tbcEvents = events.filter(event => event.confirmed === false);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Czech Crypto Week</title>
-		<style>
-			body {
-				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-				line-height: 1.6;
-				color: #333;
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 20px;
-			}
-			h1, h2 {
-				text-align: center;
-				color: #0066cc;
-			}
-			h1 {
-				margin-bottom: 10px;
-			}
-			h2 {
-				margin-top: 40px;
-				margin-bottom: 20px;
-				font-size: 1.5em;
-			}
-			ul {
-				list-style: none;
-				padding: 0;
-			}
-			li {
-				background: #f9f9f9;
-				border-radius: 8px;
-				padding: 20px;
-				margin-bottom: 20px;
-				box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-				transition: transform 0.2s;
-			}
-			li:hover {
-				transform: translateY(-5px);
-				box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-			}
-			.event-title {
-				color: #0066cc;
-				text-decoration: none;
-				font-weight: bold;
-				font-size: 1.2em;
-				display: block;
-				margin-bottom: 5px;
-			}
-			.event-title:hover {
-				text-decoration: underline;
-			}
-			.date {
-				color: #666;
-				margin: 5px 0;
-			}
-			.description {
-				margin: 10px 0;
-			}
-			.tbc-item {
-				font-size: 1.1em;
-				color: #555;
-				padding: 15px;
-			}
-			.tbc-label {
-				display: inline-block;
-				background: #f0f0f0;
-				color: #666;
-				padding: 3px 8px;
-				border-radius: 4px;
-				font-size: 0.8em;
-				margin-left: 8px;
-			}
-			.website-link {
-				display: inline-block;
-				background: #0066cc;
-				color: white;
-				padding: 8px 15px;
-				border-radius: 5px;
-				text-decoration: none;
-				font-weight: bold;
-				font-size: 0.9em;
-				transition: background 0.2s;
-				margin-top: 10px;
-			}
-			.website-link:hover {
-				background: #004c99;
-			}
-		</style>
-	</head>
-	<body>
-		<h1>Czech Crypto Week 2025 Events</h1>
-		<p style="text-align: center; margin-bottom: 30px;">May 26 - June 1, 2025 • Prague, Czech Republic</p>
-		
-		<!-- Confirmed Events Section -->
+<BaseLayout title="Czech Crypto Week 2025">
+	<!-- Hero Section -->
+	<section class="hero">
+		<div class="hero-content">
+			<h1>Czech Crypto Week 2025</h1>
+			<p class="hero-subtitle">May 26 - June 1, 2025 • Prague, Czech Republic</p>
+			<p class="hero-description">
+				A week of Ethereum and Web3 events bringing together the global crypto community in the heart of Europe.
+			</p>
+			<a href="#events" class="hero-cta">Explore Events</a>
+		</div>
+		<div class="hero-pattern"></div>
+	</section>
+
+	<!-- Confirmed Events Section -->
+	<section id="events" class="events-section">
 		<h2>Confirmed Events</h2>
-		<ul>
+		<ul class="event-list">
 			{confirmedEvents.map(event => (
-				<li>
-					<a href={`/events/${event.id}`} class="event-title">{event.name}</a>
-					<p class="date">{event.date}</p>
-					<p class="description">{event.short_description}</p>
+				<li class="event-box">
+					<a href={`/events/${event.id}`} class="event-link">
+						<div class="event-content">
+							<h3 class="event-title">{event.name}</h3>
+							<p class="event-date">{event.date}</p>
+							<p class="event-description">{event.short_description}</p>
+						</div>
+					</a>
 					{event.website && (
-						<a href={event.website} target="_blank" rel="noopener noreferrer" class="website-link">
+						<a href={event.website} target="_blank" rel="noopener noreferrer" class="website-link" onclick="event.stopPropagation();">
 							Visit Official Website
 						</a>
 					)}
 				</li>
 			))}
 		</ul>
-		
-		{tbcEvents.length > 0 && (
-			<>
-				<h2>To Be Confirmed</h2>
-				<ul>
-					{tbcEvents.map(event => (
-						<li class="tbc-item">
-							{event.name} <span class="tbc-label">TBC</span>
-						</li>
-					))}
-				</ul>
-			</>
-		)}
-	</body>
-</html>
+	</section>
+	
+	<!-- TBC Events Section -->
+	{tbcEvents.length > 0 && (
+		<section class="tbc-section">
+			<h2>To Be Confirmed</h2>
+			<ul class="tbc-list">
+				{tbcEvents.map(event => (
+					<li class="tbc-item">
+						<span class="tbc-name">{event.name}</span>
+						<span class="tbc-label">TBC</span>
+					</li>
+				))}
+			</ul>
+		</section>
+	)}
+
+	<style>
+		/* Hero Section */
+		.hero {
+			position: relative;
+			background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+			color: white;
+			padding: 80px 20px;
+			text-align: center;
+			border-radius: 10px;
+			overflow: hidden;
+			margin-bottom: 50px;
+		}
+
+		.hero-content {
+			position: relative;
+			z-index: 2;
+			max-width: 800px;
+			margin: 0 auto;
+		}
+
+		.hero h1 {
+			color: white;
+			font-size: 3rem;
+			margin-bottom: 15px;
+		}
+
+		.hero-subtitle {
+			font-size: 1.2rem;
+			margin-bottom: 20px;
+			opacity: 0.9;
+		}
+
+		.hero-description {
+			font-size: 1.1rem;
+			max-width: 600px;
+			margin: 0 auto 30px;
+			opacity: 0.8;
+		}
+
+		.hero-cta {
+			display: inline-block;
+			background-color: white;
+			color: var(--primary);
+			font-weight: 500;
+			padding: 12px 25px;
+			border-radius: 50px;
+			transition: transform 0.3s, box-shadow 0.3s;
+		}
+
+		.hero-cta:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+		}
+
+		.hero-pattern {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-image: 
+				radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 10%),
+				radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 10%);
+			z-index: 1;
+		}
+
+		/* Events Section */
+		.events-section, .tbc-section {
+			margin: 60px 0;
+		}
+
+		.events-section h2, .tbc-section h2 {
+			text-align: center;
+			margin-bottom: 30px;
+		}
+
+		.event-list {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+			gap: 25px;
+		}
+
+		.event-box {
+			background-color: var(--bg-light);
+			border-radius: 8px;
+			overflow: hidden;
+			box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s, box-shadow 0.3s;
+			position: relative;
+		}
+
+		.event-box:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+		}
+
+		.event-link {
+			display: block;
+			text-decoration: none;
+			color: inherit;
+		}
+
+		.event-content {
+			padding: 25px;
+		}
+
+		.event-title {
+			color: var(--primary);
+			font-size: 1.4rem;
+			margin-bottom: 10px;
+		}
+
+		.event-date {
+			color: var(--text-light);
+			font-size: 0.95rem;
+			margin-bottom: 15px;
+		}
+
+		.event-description {
+			margin-bottom: 20px;
+			line-height: 1.5;
+		}
+
+		.website-link {
+			display: inline-block;
+			background-color: var(--primary);
+			color: white;
+			padding: 8px 16px;
+			margin: 0 25px 25px;
+			border-radius: 4px;
+			font-size: 0.9rem;
+			font-weight: 500;
+			transition: background-color 0.3s;
+		}
+
+		.website-link:hover {
+			background-color: var(--primary-dark);
+		}
+
+		/* TBC Section */
+		.tbc-list {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+			gap: 15px;
+		}
+
+		.tbc-item {
+			background-color: var(--bg-light);
+			padding: 15px 20px;
+			border-radius: 8px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.tbc-name {
+			font-weight: 500;
+		}
+
+		.tbc-label {
+			background-color: #e9e9e9;
+			color: var(--text-light);
+			padding: 3px 8px;
+			border-radius: 4px;
+			font-size: 0.8rem;
+			font-weight: 500;
+		}
+
+		@media (max-width: 768px) {
+			.hero h1 {
+				font-size: 2.5rem;
+			}
+
+			.event-list {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</BaseLayout>
