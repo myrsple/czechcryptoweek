@@ -44,17 +44,17 @@ export const fallbackEvents = [
     tags: ["Conference", "R&D", "Layer2"]
   },
   {
-    id: "howtodao",
-    name: "How to DAO Workshop",
-    date: "May 28, 2025",
+    id: "urbecampus",
+    name: "Urbe Campus",
+    date: "May 28-31, 2025",
     dateISO: "2025-05-28",
-    short_description: "Learn how to create and manage DAOs with Jan Puncar & Kevin Owocki.",
-    website: "https://howtodao.eth",
-    confirmed: false,
+    short_description: "A 4-day bootcamp where students and beginner developers will be able to go from zero to hero with their Web3 development skills.",
+    website: "https://urbe.build/",
+    confirmed: true,
     location: "Prague, Czech Republic",
-    description: "Learn how to create, govern, and participate in Decentralized Autonomous Organizations (DAOs) with experts Jan Puncar and Kevin Owocki. This hands-on workshop will cover practical aspects of DAO creation, governance mechanisms, treasury management, and real-world use cases.",
-    organizers: ["Jan Puncar", "Kevin Owocki"],
-    tags: ["Workshop", "DAO"]
+    description: "Urbe Campus is a 4-day bootcamp where students and beginner developers will be able to go from zero to hero with their Web3 development skills. This hands-on learning experience is designed to help newcomers quickly build practical Web3 development competencies.",
+    organizers: ["Urbe.eth Team"],
+    tags: ["Bootcamp", "Education", "Developer"]
   },
   {
     id: "meetup",
@@ -68,19 +68,6 @@ export const fallbackEvents = [
     description: "Join the local Ethereum community for an evening of networking, short presentations, and discussions. This is a great opportunity to meet like-minded enthusiasts, developers, and entrepreneurs who are building the future of Web3 in the Czech Republic and beyond.",
     organizers: ["EthCzech Community"],
     tags: ["Meetup", "Community", "Networking"]
-  },
-  {
-    id: "urbecampus",
-    name: "Urbe Campus",
-    date: "May 28-31, 2025",
-    dateISO: "2025-05-28",
-    short_description: "A 4-day bootcamp where students and beginner developers will be able to go from zero to hero with their Web3 development skills.",
-    website: "https://urbe.build/",
-    confirmed: true,
-    location: "Prague, Czech Republic",
-    description: "Urbe Campus is a 4-day bootcamp where students and beginner developers will be able to go from zero to hero with their Web3 development skills. This hands-on learning experience is designed to help newcomers quickly build practical Web3 development competencies.",
-    organizers: ["Urbe.eth Team"],
-    tags: ["Bootcamp", "Education", "Developer"]
   },
   {
     name: "Ackee Happy Hour",
