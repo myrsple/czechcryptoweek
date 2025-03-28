@@ -53,6 +53,21 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 							Visit Official Website
 						</a>
 					)}
+                    
+                    {/* Special links for ETHPrague */}
+                    {event.id === "ethprague2025" && (
+                        <div class="additional-links">
+                            <a href="https://tix.ducttape.events/dt/ethpragueconf25/" target="_blank" rel="noopener noreferrer" class="additional-link tickets-link">
+                                <span>Tickets</span>
+                            </a>
+                            <a href="https://pwn.typeform.com/to/MT4Kv8lH" target="_blank" rel="noopener noreferrer" class="additional-link volunteer-link">
+                                <span>Volunteer</span>
+                            </a>
+                            <a href="https://ethprague.com/deck" target="_blank" rel="noopener noreferrer" class="additional-link sponsor-link">
+                                <span>Sponsor</span>
+                            </a>
+                        </div>
+                    )}
 				</li>
 			))}
 		</ul>
@@ -266,6 +281,41 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 			.event-list {
 				grid-template-columns: 1fr;
 			}
+		}
+
+		/* Additional Links for ETHPrague */
+		.additional-links {
+			display: flex;
+			justify-content: center;
+			gap: 10px;
+			margin: 0 25px 20px;
+		}
+
+		.additional-link {
+			flex: 1;
+			padding: 6px 5px;
+			text-align: center;
+			border-radius: 4px;
+			font-size: 0.85rem;
+			font-weight: 500;
+			color: white;
+			transition: opacity 0.2s;
+		}
+
+		.additional-link:hover {
+			opacity: 0.9;
+		}
+
+		.tickets-link {
+			background-color: #34c759;
+		}
+
+		.volunteer-link {
+			background-color: #5856d6;
+		}
+
+		.sponsor-link {
+			background-color: #ff9500;
 		}
 	</style>
 </BaseLayout>
