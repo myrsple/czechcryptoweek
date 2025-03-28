@@ -67,6 +67,8 @@ console.log("TBC events:", tbcEvents.map(e => e.name));
 
 // Define functions for sorting and processing events
 function processEvents(events) {
+	console.log("Processing events:", events.map(e => e.name));
+
 	const confirmed = events.filter(event => event.confirmed);
 	const tbc = events.filter(event => !event.confirmed);
 	
@@ -184,6 +186,11 @@ function processEvents(events) {
 // Fetch event data and handle errors
 const eventData = await fetchEventData();
 const { confirmedEvents, tbcEvents, uniqueDates, uniqueTags, eventsByDate } = processEvents(eventData);
+
+// Remove duplicated event processing code
+const allTags = [...uniqueTags];
+
+console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 ---
 
 <BaseLayout title="Czech Crypto Week | Prague Blockchain Week 2025" description="The premier blockchain and cryptocurrency event series in Prague, Czech Republic. Join global developers, entrepreneurs, and enthusiasts in Central Europe's crypto hub.">
