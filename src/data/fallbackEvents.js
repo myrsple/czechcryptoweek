@@ -31,7 +31,7 @@ export const fallbackEvents = [
     name: "ProtoLayers Ethereum R&D Event",
     date: "May 26, 2025",
     short_description: "An Ethereum research and development focused event by ProtoLayers.",
-    website: "https://protolayers.org",
+    website: "https://protolayers.dev",
     confirmed: true,
     location: "Prague, Czech Republic",
     description: "Join ProtoLayers for a deep dive into cutting-edge Ethereum research and development. This focused event brings together researchers and developers to discuss the latest advances in Ethereum protocol, layer-2 solutions, and scaling technologies.",
