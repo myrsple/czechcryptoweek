@@ -61,18 +61,6 @@ export const fallbackEvents = [
     sponsors: ["Paralelní Polis", "BeerFi"]
   },
   {
-    name: "Ethereum Social Event",
-    confirmed: false
-  },
-  {
-    name: "NFT Prague Meetup",
-    confirmed: false
-  },
-  {
-    name: "DeFi Workshop",
-    confirmed: false
-  },
-  {
     name: "Ackee Happy Hour",
     confirmed: false
   },
