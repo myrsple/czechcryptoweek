@@ -71,5 +71,41 @@ export const fallbackEvents = [
   {
     name: "DeFi Workshop",
     confirmed: false
+  },
+  {
+    name: "Ackee Happy Hour",
+    confirmed: false
+  },
+  {
+    name: "BeerFi Developer Meetup",
+    confirmed: false
+  },
+  {
+    name: "Web3PrivacyNow Privacy Meetup",
+    confirmed: false
+  },
+  {
+    name: "OnlyDust Open Source Meetup",
+    confirmed: false
+  },
+  {
+    name: "Logos Meetup",
+    confirmed: false
+  },
+  {
+    name: "Dabl.Club Workshop/Bootcamp",
+    confirmed: false
+  },
+  {
+    name: "ZKHack Meetup",
+    confirmed: false
+  },
+  {
+    name: "Longevity Meetup",
+    confirmed: false
+  },
+  {
+    name: "Polkadot Meetup",
+    confirmed: false
   }
 ]; 
