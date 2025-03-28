@@ -219,6 +219,13 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 								<h3 class="event-title">{event.name}</h3>
 								<p class="event-date">{event.date}</p>
 								<p class="event-description">{event.short_description}</p>
+								{event.tags && event.tags.length > 0 && (
+									<div class="event-tags">
+										{event.tags.map(tag => (
+											<span class="event-tag">{tag}</span>
+										))}
+									</div>
+								)}
 							</div>
 						</a>
 						{event.website && (
@@ -250,6 +257,13 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 											{event.dayIndicator && <span class="day-indicator">{event.dayIndicator}</span>}
 										</h4>
 										<p class="day-event-description">{event.short_description}</p>
+										{event.tags && event.tags.length > 0 && (
+											<div class="event-tags day-event-tags">
+												{event.tags.map(tag => (
+													<span class="event-tag">{tag}</span>
+												))}
+											</div>
+										)}
 									</div>
 								</a>
 								{event.website && (
@@ -615,6 +629,22 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			flex-grow: 1;
 		}
 
+		.event-tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 6px;
+			margin-bottom: 10px;
+		}
+
+		.event-tag {
+			background-color: var(--primary-light);
+			color: var(--primary-dark);
+			padding: 3px 8px;
+			border-radius: 4px;
+			font-size: 0.8rem;
+			font-weight: 500;
+		}
+
 		.website-link {
 			display: inline-block;
 			background-color: var(--primary);
@@ -703,6 +733,11 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 		.day-event-description {
 			font-size: 0.95rem;
 			color: var(--text-base);
+		}
+		
+		.day-event-tags {
+			margin-top: 8px;
+			margin-bottom: 0;
 		}
 		
 		.day-website-link {
