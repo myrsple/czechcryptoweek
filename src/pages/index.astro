@@ -155,8 +155,12 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 <BaseLayout title="Czech Crypto Week | Prague Blockchain Week 2025" description="The premier blockchain and cryptocurrency event series in Prague, Czech Republic. Join global developers, entrepreneurs, and enthusiasts in Central Europe's crypto hub.">
 	<!-- Hero Section -->
 	<section class="hero">
+		<div class="pixelated-pattern"></div>
 		<div class="hero-content">
-			<h1>Czech Crypto Week 2025</h1>
+			<div class="hero-logo">
+				<span class="logo-pixels"></span>
+				<h1>CzechCryptoWeek</h1>
+			</div>
 			<p class="hero-subtitle">May 26 - June 1, 2025 • Prague, Czech Republic</p>
 			<p class="hero-description">
 				A week of blockchain and cryptocurrency events bringing together the global crypto community in the heart of Europe. 
@@ -164,7 +168,6 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			</p>
 			<a href="#events" class="hero-cta">Explore Events</a>
 		</div>
-		<div class="hero-pattern"></div>
 	</section>
 
 	<!-- Confirmed Events Section -->
@@ -327,13 +330,24 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 		/* Hero Section */
 		.hero {
 			position: relative;
-			background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+			background: #0066cc;
 			color: white;
-			padding: 60px 20px;
+			padding: 80px 20px;
 			text-align: center;
-			border-radius: 10px;
 			overflow: hidden;
 			margin-bottom: 40px;
+		}
+
+		.pixelated-pattern {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-image: url('/images/bg-pattern.svg');
+			background-size: 400px 400px;
+			background-repeat: repeat;
+			z-index: 1;
 		}
 
 		.hero-content {
@@ -343,10 +357,29 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			margin: 0 auto;
 		}
 
+		.hero-logo {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 25px;
+		}
+
+		.logo-pixels {
+			display: inline-block;
+			width: 40px;
+			height: 40px;
+			margin-right: 10px;
+			background-image: url('/images/logo-pixels.svg');
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+
 		.hero h1 {
 			color: white;
-			font-size: 3rem;
-			margin-bottom: 15px;
+			font-size: 3.2rem;
+			font-weight: 700;
+			margin: 0;
+			letter-spacing: -0.5px;
 		}
 
 		.hero-subtitle {
@@ -378,26 +411,17 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 		}
 
 		.hero-pattern {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background-image: 
-				radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 10%),
-				radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 10%);
-			z-index: 1;
+			display: none;
 		}
 
 		@media (max-width: 768px) {
 			.hero {
-				padding: 40px 15px;
+				padding: 60px 15px;
 				margin-bottom: 30px;
 			}
 			
 			.hero h1 {
-				font-size: 2rem;
-				margin-bottom: 10px;
+				font-size: 2.5rem;
 			}
 			
 			.hero-subtitle {
@@ -423,7 +447,12 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 		
 		@media (max-width: 480px) {
 			.hero h1 {
-				font-size: 1.8rem;
+				font-size: 2rem;
+			}
+			
+			.logo-pixels {
+				width: 30px;
+				height: 30px;
 			}
 			
 			.hero-subtitle {
