@@ -166,29 +166,9 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			<h2>About Czech Crypto Week</h2>
 			<div class="about-content">
 				<div class="about-text">
-					<p class="lead-text">
-						Czech Crypto Week is Prague's premier blockchain and cryptocurrency event series, bringing together developers, entrepreneurs, investors, and enthusiasts from around the globe.
+					<p class="about-description">
+						Czech Crypto Week, also known as Prague Blockchain Week, is the leading blockchain and cryptocurrency event series in Prague, attracting developers, entrepreneurs, investors, and enthusiasts worldwide. Join us from May 26 to June 1, 2025, in Prague, Czech Republic, for a week of blockchain innovation, including conferences, hackathons, workshops, and networking events.
 					</p>
-					<p>
-						From <strong>May 26 to June 1, 2025</strong>, Prague will transform into a hub of innovation and collaboration for the global crypto community. Also known as Prague Blockchain Week, this annual gathering features conferences, hackathons, workshops, and networking events across the beautiful city of Prague.
-					</p>
-					<p>
-						Whether you're interested in Ethereum, Web3, DeFi, NFTs, or blockchain technology in general, Czech Crypto Week offers something for everyone—from technical deep dives to community-building activities. Join us in the heart of Europe for a week of learning, building, and connecting with the brightest minds in the industry.
-					</p>
-					<div class="key-info">
-						<div class="info-item">
-							<h3>When</h3>
-							<p>May 26 - June 1, 2025</p>
-						</div>
-						<div class="info-item">
-							<h3>Where</h3>
-							<p>Various venues across Prague, Czech Republic</p>
-						</div>
-						<div class="info-item">
-							<h3>Who</h3>
-							<p>Developers, entrepreneurs, investors, artists, students, and crypto enthusiasts</p>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -455,59 +435,30 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 		
 		.about-section h2 {
 			text-align: center;
-			margin-bottom: 40px;
+			margin-bottom: 30px;
 			color: var(--primary);
 			font-size: 2.2rem;
 		}
 		
-		.lead-text {
-			font-size: 1.3rem;
-			font-weight: 500;
-			margin-bottom: 20px;
-			color: var(--primary);
-		}
-		
 		.about-content {
 			display: flex;
-			gap: 30px;
 			align-items: center;
-			flex-direction: column;
+			justify-content: center;
 		}
 		
 		.about-text {
-			flex: 1;
+			max-width: 800px;
 		}
 		
-		.about-text p {
-			margin-bottom: 20px;
-			line-height: 1.7;
-			font-size: 1.05rem;
-		}
-		
-		.key-info {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-			gap: 25px;
-			margin-top: 30px;
-			background-color: var(--bg-light);
-			padding: 25px;
-			border-radius: 10px;
-		}
-		
-		.info-item h3 {
-			color: var(--primary);
-			margin-bottom: 8px;
+		.about-description {
 			font-size: 1.2rem;
+			line-height: 1.6;
+			text-align: center;
 		}
 		
 		@media (max-width: 768px) {
-			.about-content {
-				flex-direction: column;
-			}
-			
-			.key-info {
-				grid-template-columns: 1fr;
-				gap: 20px;
+			.about-description {
+				font-size: 1.1rem;
 			}
 		}
 
