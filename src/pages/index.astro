@@ -155,7 +155,6 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 <BaseLayout title="Czech Crypto Week | Prague Blockchain Week 2025" description="The premier blockchain and cryptocurrency event series in Prague, Czech Republic. Join global developers, entrepreneurs, and enthusiasts in Central Europe's crypto hub.">
 	<!-- Hero Section -->
 	<section class="hero">
-		<div class="pixelated-pattern"></div>
 		<div class="hero-content">
 			<div class="hero-logo">
 				<span class="logo-pixels"></span>
@@ -330,7 +329,9 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 		/* Hero Section */
 		.hero {
 			position: relative;
-			background: #0066cc;
+			background-image: url('/images/cover_CCW.png');
+			background-size: cover;
+			background-position: center;
 			color: white;
 			padding: 80px 20px;
 			text-align: center;
@@ -338,16 +339,8 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			margin-bottom: 40px;
 		}
 
-		.pixelated-pattern {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background-image: url('/images/bg-pattern.svg');
-			background-size: 400px 400px;
-			background-repeat: repeat;
-			z-index: 1;
+		.hero::before {
+			content: none;
 		}
 
 		.hero-content {
@@ -355,6 +348,10 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			z-index: 2;
 			max-width: 800px;
 			margin: 0 auto;
+		}
+
+		.pixelated-pattern {
+			display: none;
 		}
 
 		.hero-logo {
