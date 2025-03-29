@@ -152,10 +152,46 @@ const allTags = [...uniqueTags];
 console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 ---
 
-<BaseLayout title="Czech Crypto Week | Prague Blockchain Week 2025" description="The premier blockchain and cryptocurrency event series in Prague, Czech Republic. Join global developers, entrepreneurs, and enthusiasts in Central Europe's crypto hub.">
+<BaseLayout 
+	title="Czech Crypto Week 2025 | Prague Blockchain Week | May 26-June 1" 
+	description="Join the premier blockchain and cryptocurrency event series in Prague. Conferences, hackathons and workshops for developers, entrepreneurs and crypto enthusiasts in the heart of Europe.">
 	<!-- Hero Section -->
 	<section class="hero">
 		<img src="/images/cover2.jpg" alt="Czech Crypto Week" class="hero-image">
+	</section>
+
+	<!-- About Section -->
+	<section id="about" class="about-section">
+		<div class="container">
+			<h2>About Czech Crypto Week</h2>
+			<div class="about-content">
+				<div class="about-text">
+					<p class="lead-text">
+						Czech Crypto Week is Prague's premier blockchain and cryptocurrency event series, bringing together developers, entrepreneurs, investors, and enthusiasts from around the globe.
+					</p>
+					<p>
+						From <strong>May 26 to June 1, 2025</strong>, Prague will transform into a hub of innovation and collaboration for the global crypto community. Also known as Prague Blockchain Week, this annual gathering features conferences, hackathons, workshops, and networking events across the beautiful city of Prague.
+					</p>
+					<p>
+						Whether you're interested in Ethereum, Web3, DeFi, NFTs, or blockchain technology in general, Czech Crypto Week offers something for everyone—from technical deep dives to community-building activities. Join us in the heart of Europe for a week of learning, building, and connecting with the brightest minds in the industry.
+					</p>
+					<div class="key-info">
+						<div class="info-item">
+							<h3>When</h3>
+							<p>May 26 - June 1, 2025</p>
+						</div>
+						<div class="info-item">
+							<h3>Where</h3>
+							<p>Various venues across Prague, Czech Republic</p>
+						</div>
+						<div class="info-item">
+							<h3>Who</h3>
+							<p>Developers, entrepreneurs, investors, artists, students, and crypto enthusiasts</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
 
 	<!-- Confirmed Events Section -->
@@ -403,6 +439,75 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			
 			.hero-content {
 				bottom: 20px;
+			}
+		}
+
+		/* About Section */
+		.about-section {
+			margin: 60px 0;
+			padding: 0 20px;
+		}
+		
+		.container {
+			max-width: 1000px;
+			margin: 0 auto;
+		}
+		
+		.about-section h2 {
+			text-align: center;
+			margin-bottom: 40px;
+			color: var(--primary);
+			font-size: 2.2rem;
+		}
+		
+		.lead-text {
+			font-size: 1.3rem;
+			font-weight: 500;
+			margin-bottom: 20px;
+			color: var(--primary);
+		}
+		
+		.about-content {
+			display: flex;
+			gap: 30px;
+			align-items: center;
+			flex-direction: column;
+		}
+		
+		.about-text {
+			flex: 1;
+		}
+		
+		.about-text p {
+			margin-bottom: 20px;
+			line-height: 1.7;
+			font-size: 1.05rem;
+		}
+		
+		.key-info {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 25px;
+			margin-top: 30px;
+			background-color: var(--bg-light);
+			padding: 25px;
+			border-radius: 10px;
+		}
+		
+		.info-item h3 {
+			color: var(--primary);
+			margin-bottom: 8px;
+			font-size: 1.2rem;
+		}
+		
+		@media (max-width: 768px) {
+			.about-content {
+				flex-direction: column;
+			}
+			
+			.key-info {
+				grid-template-columns: 1fr;
+				gap: 20px;
 			}
 		}
 
