@@ -73,7 +73,12 @@ const { title = "Czech Crypto Week | Prague Blockchain Week 2025", description =
       <nav class="navbar">
         <div class="container">
           <a href="/" class="logo">Czech Crypto Week</a>
-          <div class="links">
+          <div class="menu-icon" id="menuToggle">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+          </div>
+          <div class="links" id="mobileNav">
             <a href="/">Home</a>
             <a href="/#events">Events</a>
             <a href="https://lu.ma/czechcryptoweek" target="_blank" rel="noopener noreferrer">Calendar</a>
@@ -142,6 +147,7 @@ const { title = "Czech Crypto Week | Prague Blockchain Week 2025", description =
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
+        position: relative;
       }
       
       .logo {
@@ -164,6 +170,50 @@ const { title = "Czech Crypto Week | Prague Blockchain Week 2025", description =
       
       .links a:hover {
         background-color: rgba(255, 255, 255, 0.1);
+      }
+      
+      /* Hamburger Menu Styles */
+      .menu-icon {
+        display: none;
+        cursor: pointer;
+        padding: 5px;
+      }
+      
+      .bar1, .bar2, .bar3 {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 5px 0;
+        transition: 0.4s;
+        border-radius: 1px;
+      }
+      
+      /* Mobile Styles */
+      @media (max-width: 768px) {
+        .links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          background: var(--primary-dark);
+          padding: 15px;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          z-index: 10;
+          gap: 15px;
+          text-align: center;
+          border-radius: 0 0 8px 8px;
+        }
+        
+        .links.active {
+          display: flex;
+        }
+        
+        .menu-icon {
+          display: block;
+          z-index: 20;
+        }
       }
       
       /* Footer Styles */
@@ -232,5 +282,19 @@ const { title = "Czech Crypto Week | Prague Blockchain Week 2025", description =
         }
       }
     </style>
+    <script>
+      // Mobile menu toggle functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        if (menuToggle && mobileNav) {
+          menuToggle.addEventListener('click', function() {
+            mobileNav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+          });
+        }
+      });
+    </script>
   </body>
 </html> 

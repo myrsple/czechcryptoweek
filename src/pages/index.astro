@@ -329,11 +329,11 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			position: relative;
 			background: linear-gradient(135deg, var(--primary), var(--primary-dark));
 			color: white;
-			padding: 80px 20px;
+			padding: 60px 20px;
 			text-align: center;
 			border-radius: 10px;
 			overflow: hidden;
-			margin-bottom: 50px;
+			margin-bottom: 40px;
 		}
 
 		.hero-content {
@@ -387,6 +387,52 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 				radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 10%),
 				radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 10%);
 			z-index: 1;
+		}
+
+		@media (max-width: 768px) {
+			.hero {
+				padding: 40px 15px;
+				margin-bottom: 30px;
+			}
+			
+			.hero h1 {
+				font-size: 2rem;
+				margin-bottom: 10px;
+			}
+			
+			.hero-subtitle {
+				font-size: 1rem;
+				margin-bottom: 15px;
+			}
+			
+			.hero-description {
+				font-size: 0.95rem;
+				margin-bottom: 25px;
+				line-height: 1.5;
+			}
+			
+			.hero-cta {
+				padding: 10px 20px;
+				font-size: 0.95rem;
+			}
+			
+			.event-list {
+				grid-template-columns: 1fr;
+			}
+		}
+		
+		@media (max-width: 480px) {
+			.hero h1 {
+				font-size: 1.8rem;
+			}
+			
+			.hero-subtitle {
+				font-size: 0.9rem;
+			}
+			
+			.hero-description {
+				font-size: 0.9rem;
+			}
 		}
 
 		/* Events Section */
@@ -798,16 +844,6 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			font-weight: 500;
 		}
 
-		@media (max-width: 768px) {
-			.hero h1 {
-				font-size: 2.5rem;
-			}
-
-			.event-list {
-				grid-template-columns: 1fr;
-			}
-		}
-		
 		/* Contribute Section */
 		.contribute-section {
 			margin: 60px 0;
