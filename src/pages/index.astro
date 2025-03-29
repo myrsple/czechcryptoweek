@@ -156,10 +156,6 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 	<!-- Hero Section -->
 	<section class="hero">
 		<img src="/images/cover2.jpg" alt="Czech Crypto Week" class="hero-image">
-		<div class="hero-content">
-			<h1>Czech Crypto Week</h1>
-			<a href="#events" class="hero-cta">Explore Events</a>
-		</div>
 	</section>
 
 	<!-- Confirmed Events Section -->
@@ -324,25 +320,19 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			position: relative;
 			overflow: hidden;
 			margin-bottom: 40px;
-			height: auto;
 			width: 100%;
+			max-height: 500px;
 		}
 
 		.hero-image {
 			width: 100%;
 			display: block;
+			object-fit: contain;
+			max-width: 100%;
 		}
 
 		.hero-content {
-			position: absolute;
-			bottom: 40px;
-			left: 0;
-			width: 100%;
-			text-align: center;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			padding: 0 20px;
+			display: none;
 		}
 
 		.hero h1 {
