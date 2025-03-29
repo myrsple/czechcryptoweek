@@ -155,8 +155,10 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 <BaseLayout title="Czech Crypto Week | Prague Blockchain Week 2025" description="The premier blockchain and cryptocurrency event series in Prague, Czech Republic. Join global developers, entrepreneurs, and enthusiasts in Central Europe's crypto hub.">
 	<!-- Hero Section -->
 	<section class="hero">
+		<img src="/images/cover2.jpg" alt="Czech Crypto Week" class="hero-image">
 		<div class="hero-content">
 			<h1>Czech Crypto Week</h1>
+			<a href="#events" class="hero-cta">Explore Events</a>
 		</div>
 	</section>
 
@@ -320,20 +322,51 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 		/* Hero Section */
 		.hero {
 			position: relative;
-			background-image: url('/images/cover2.jpg');
-			background-size: cover;
-			background-position: center;
-			color: white;
-			height: 530px;
 			overflow: hidden;
-			display: flex;
-			align-items: center;
-			justify-content: center;
 			margin-bottom: 40px;
+			height: auto;
+			width: 100%;
+		}
+
+		.hero-image {
+			width: 100%;
+			display: block;
 		}
 
 		.hero-content {
-			display: none;
+			position: absolute;
+			bottom: 40px;
+			left: 0;
+			width: 100%;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 0 20px;
+		}
+
+		.hero h1 {
+			color: white;
+			font-size: 3.2rem;
+			font-weight: 700;
+			margin: 0 0 20px 0;
+			letter-spacing: -0.5px;
+			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+		}
+
+		.hero-cta {
+			display: inline-block;
+			background-color: white;
+			color: var(--primary);
+			font-weight: 500;
+			padding: 12px 25px;
+			border-radius: 50px;
+			transition: transform 0.3s, box-shadow 0.3s;
+		}
+
+		.hero-cta:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 		}
 
 		.hero::before {
@@ -352,40 +385,12 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 			display: none;
 		}
 
-		.hero h1 {
-			color: white;
-			font-size: 3.2rem;
-			font-weight: 700;
-			margin: 0;
-			letter-spacing: -0.5px;
-		}
-
 		.hero-subtitle {
-			font-size: 1.2rem;
-			margin-bottom: 20px;
-			opacity: 0.9;
+			display: none;
 		}
 
 		.hero-description {
-			font-size: 1.1rem;
-			max-width: 600px;
-			margin: 0 auto 30px;
-			opacity: 0.8;
-		}
-
-		.hero-cta {
-			display: inline-block;
-			background-color: white;
-			color: var(--primary);
-			font-weight: 500;
-			padding: 12px 25px;
-			border-radius: 50px;
-			transition: transform 0.3s, box-shadow 0.3s;
-		}
-
-		.hero-cta:hover {
-			transform: translateY(-3px);
-			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+			display: none;
 		}
 
 		.hero-pattern {
@@ -393,55 +398,23 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 		}
 
 		@media (max-width: 768px) {
-			.hero {
-				height: 400px;
-			}
-			
 			.hero h1 {
 				font-size: 2.5rem;
-			}
-			
-			.hero-subtitle {
-				font-size: 1rem;
-				margin-bottom: 15px;
-			}
-			
-			.hero-description {
-				font-size: 0.95rem;
-				margin-bottom: 25px;
-				line-height: 1.5;
 			}
 			
 			.hero-cta {
 				padding: 10px 20px;
 				font-size: 0.95rem;
 			}
-			
-			.event-list {
-				grid-template-columns: 1fr;
-			}
 		}
 		
 		@media (max-width: 480px) {
-			.hero {
-				height: 300px;
-			}
-			
 			.hero h1 {
 				font-size: 2rem;
 			}
 			
-			.logo-pixels {
-				width: 30px;
-				height: 30px;
-			}
-			
-			.hero-subtitle {
-				font-size: 0.9rem;
-			}
-			
-			.hero-description {
-				font-size: 0.9rem;
+			.hero-content {
+				bottom: 20px;
 			}
 		}
 
