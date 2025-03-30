@@ -72,18 +72,18 @@ const { title = "Czech Crypto Week | Prague Blockchain Week 2025", description =
     <header>
       <nav class="navbar">
         <div class="container">
-          <a href="/" class="logo">Czech Crypto Week</a>
+          <a href="/" class="logo">
+            <img src="/images/logo_CCW.png" alt="Czech Crypto Week" class="logo-image">
+          </a>
           <div class="menu-icon" id="menuToggle">
             <div class="bar1"></div>
             <div class="bar2"></div>
             <div class="bar3"></div>
           </div>
           <div class="links" id="mobileNav">
-            <a href="/">Home</a>
-            <a href="/#about">About</a>
-            <a href="/#events">Events</a>
             <a href="https://lu.ma/czechcryptoweek" target="_blank" rel="noopener noreferrer">Calendar</a>
-            <a href="https://twitter.com/czechcryptoweek" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="https://x.com/czechcryptoweek" target="_blank" rel="noopener noreferrer">X</a>
+            <a href="https://github.com/EthCzech/czechcryptoweek" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
         </div>
       </nav>
@@ -105,7 +105,7 @@ const { title = "Czech Crypto Week | Prague Blockchain Week 2025", description =
           <div class="footer-section">
             <h3>Connect</h3>
             <ul>
-              <li><a href="https://twitter.com/czechcryptoweek" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+              <li><a href="https://x.com/czechcryptoweek" target="_blank" rel="noopener noreferrer">X</a></li>
               <li><a href="https://github.com/EthCzech/czechcryptoweek" target="_blank" rel="noopener noreferrer">GitHub</a></li>
               <li><a href="https://lu.ma/czechcryptoweek" target="_blank" rel="noopener noreferrer">Event Calendar</a></li>
             </ul>
@@ -155,6 +155,13 @@ const { title = "Czech Crypto Week | Prague Blockchain Week 2025", description =
         font-weight: 700;
         font-size: 1.3rem;
         color: white;
+        display: flex;
+        align-items: center;
+      }
+      
+      .logo-image {
+        height: 40px;
+        width: auto;
       }
       
       .links {
