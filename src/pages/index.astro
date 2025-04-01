@@ -229,7 +229,7 @@ console.log("TBC events length:", tbcEvents.length);
 			<ul class="event-list">
 				{confirmedEvents.map(event => (
 					<li class="event-box" data-date={event.dateISO} data-tags={event.tags ? event.tags.join(',') : ''}>
-						<a href={`/events/${event.id}`} class="event-link">
+						<a href={`/events/${event.id}/`} class="event-link">
 							<div class="event-content">
 								<h3 class="event-title">{event.name}</h3>
 								<p class="event-date">{event.date}</p>
@@ -265,7 +265,7 @@ console.log("TBC events length:", tbcEvents.length);
 					<ul class="day-events">
 						{dayEvents.map(event => (
 							<li class="day-event" data-tags={event.tags ? event.tags.join(',') : ''}>
-								<a href={`/events/${event.id}`} class="day-event-link">
+								<a href={`/events/${event.id}/`} class="day-event-link">
 									<div class="day-event-content">
 										<h4 class="day-event-title">
 											{event.name}
