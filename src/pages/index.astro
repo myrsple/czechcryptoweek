@@ -242,12 +242,24 @@ console.log("TBC events length:", tbcEvents.length);
 									</div>
 								)}
 							</div>
+							<div class="event-actions">
+								{event.tickets && (
+									<a href={event.tickets} target="_blank" rel="noopener noreferrer" class="tickets-link" onclick="event.stopPropagation();">
+										Tickets
+									</a>
+								)}
+								{!event.tickets && event.website && (
+									<a href={event.website} target="_blank" rel="noopener noreferrer" class="tickets-link" onclick="event.stopPropagation();">
+										Tickets
+									</a>
+								)}
+								{event.website && (
+									<a href={event.website} target="_blank" rel="noopener noreferrer" class="website-link" onclick="event.stopPropagation();">
+										Website
+									</a>
+								)}
+							</div>
 						</a>
-						{event.website && (
-							<a href={event.website} target="_blank" rel="noopener noreferrer" class="website-link" onclick="event.stopPropagation();">
-								Visit Official Website
-							</a>
-						)}
 					</li>
 				))}
 			</ul>
@@ -280,12 +292,24 @@ console.log("TBC events length:", tbcEvents.length);
 											</div>
 										)}
 									</div>
+									<div class="day-event-actions">
+										{event.tickets && (
+											<a href={event.tickets} target="_blank" rel="noopener noreferrer" class="day-tickets-link" onclick="event.stopPropagation();">
+												Tickets
+											</a>
+										)}
+										{!event.tickets && event.website && (
+											<a href={event.website} target="_blank" rel="noopener noreferrer" class="day-tickets-link" onclick="event.stopPropagation();">
+												Tickets
+											</a>
+										)}
+										{event.website && (
+											<a href={event.website} target="_blank" rel="noopener noreferrer" class="day-website-link" onclick="event.stopPropagation();">
+												Website
+											</a>
+										)}
+									</div>
 								</a>
-								{event.website && (
-									<a href={event.website} target="_blank" rel="noopener noreferrer" class="day-website-link">
-										Visit Website
-									</a>
-								)}
 							</li>
 						))}
 					</ul>
@@ -731,17 +755,37 @@ console.log("TBC events length:", tbcEvents.length);
 			background-color: var(--primary);
 			color: white;
 			padding: 8px 16px;
-			margin: 0 25px 25px;
 			border-radius: 4px;
 			font-size: 0.9rem;
 			font-weight: 500;
 			transition: background-color 0.3s;
 			text-align: center;
-			margin-top: auto;
 		}
 
 		.website-link:hover {
 			background-color: var(--primary-dark);
+		}
+		
+		.tickets-link {
+			display: inline-block;
+			background-color: #34c759;
+			color: white;
+			padding: 8px 16px;
+			border-radius: 4px;
+			font-size: 0.9rem;
+			font-weight: 500;
+			transition: background-color 0.3s;
+			text-align: center;
+			margin-right: 10px;
+		}
+		
+		.tickets-link:hover {
+			background-color: #2aa147;
+		}
+		
+		.event-actions {
+			display: flex;
+			padding: 0 25px 25px;
 		}
 		
 		/* Days View */
@@ -835,6 +879,27 @@ console.log("TBC events length:", tbcEvents.length);
 		
 		.day-website-link:hover {
 			background-color: var(--primary-dark);
+		}
+		
+		.day-tickets-link {
+			background-color: #34c759;
+			color: white;
+			padding: 8px 16px;
+			border-radius: 4px;
+			font-size: 0.9rem;
+			font-weight: 500;
+			transition: background-color 0.3s;
+			white-space: nowrap;
+			margin-right: 10px;
+		}
+		
+		.day-tickets-link:hover {
+			background-color: #2aa147;
+		}
+		
+		.day-event-actions {
+			padding: 0;
+			margin-left: 20px;
 		}
 		
 		.no-results {
