@@ -100,5 +100,53 @@
       "map": "https://maps.app.goo.gl/1as8DCNw9aDz2wKB8"
     },
     "tags": ["Meetup", "Privacy", "Human Rights", "Open Source"]
+  },
+  {
+    "id": "ackee",
+    "name": "Ackee Happy Hour",
+    "confirmed": false,
+    "tags": ["Social"]
+  },
+  {
+    "id": "beerfi",
+    "name": "BeerFi Developer Meetup",
+    "confirmed": false,
+    "tags": ["Meetup", "Developer"]
+  },
+  {
+    "id": "onlydust",
+    "name": "OnlyDust Open Source Meetup",
+    "confirmed": false,
+    "tags": ["Meetup", "Open Source"]
+  },
+  {
+    "id": "logos",
+    "name": "Logos Meetup",
+    "confirmed": false,
+    "tags": ["Meetup"]
+  },
+  {
+    "id": "dablclub",
+    "name": "Dabl.Club Workshop/Bootcamp",
+    "confirmed": false,
+    "tags": ["Workshop", "Bootcamp"]
+  },
+  {
+    "id": "zkhack",
+    "name": "ZKHack Meetup",
+    "confirmed": false,
+    "tags": ["Meetup", "ZKP"]
+  },
+  {
+    "id": "longevity",
+    "name": "Longevity Meetup",
+    "confirmed": false,
+    "tags": ["Meetup", "Longevity"]
+  },
+  {
+    "id": "polkadot",
+    "name": "Polkadot Meetup",
+    "confirmed": false,
+    "tags": ["Meetup", "Polkadot"]
   }
 ] 
