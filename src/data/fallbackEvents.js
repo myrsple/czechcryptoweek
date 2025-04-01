@@ -16,8 +16,8 @@ export const fallbackEvents = [
   {
     id: "pragma",
     name: "Pragma Prague",
-    date: "May 27, 2025",
-    dateISO: "2025-05-27",
+    date: "May 29, 2025",
+    dateISO: "2025-05-29",
     short_description: "The premier developer-focused conference for the Ethereum ecosystem and beyond.",
     website: "https://ethglobal.com/events/pragma-prague",
     tickets: "https://ethglobal.com/events/pragma-prague",
