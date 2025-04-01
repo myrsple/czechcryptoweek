@@ -242,18 +242,18 @@ console.log("TBC events length:", tbcEvents.length);
 									</div>
 								)}
 							</div>
-							<div class="event-actions">
-								{event.tickets ? (
-									<a href={event.tickets} target="_blank" rel="noopener noreferrer" class="tickets-link" onclick="event.stopPropagation();">
-										Tickets
-									</a>
-								) : event.website && (
-									<a href={event.website} target="_blank" rel="noopener noreferrer" class="website-link" onclick="event.stopPropagation();">
-										Website
-									</a>
-								)}
-							</div>
 						</a>
+						<div class="event-actions">
+							{event.tickets ? (
+								<a href={event.tickets} target="_blank" rel="noopener noreferrer" class="tickets-link">
+									Tickets
+								</a>
+							) : event.website && (
+								<a href={event.website} target="_blank" rel="noopener noreferrer" class="website-link">
+									Website
+								</a>
+							)}
+						</div>
 					</li>
 				))}
 			</ul>
@@ -271,33 +271,35 @@ console.log("TBC events length:", tbcEvents.length);
 					<ul class="day-events">
 						{dayEvents.map(event => (
 							<li class="day-event" data-tags={event.tags ? event.tags.join(',') : ''}>
-								<a href={`/events/${event.id}/`} class="day-event-link">
-									<div class="day-event-content">
-										<h4 class="day-event-title">
-											{event.name}
-											{event.dayIndicator && <span class="day-indicator">{event.dayIndicator}</span>}
-										</h4>
-										<p class="day-event-description">{event.short_description}</p>
-										{event.tags && event.tags.length > 0 && (
-											<div class="event-tags day-event-tags">
-												{event.tags.map(tag => (
-													<span class="event-tag">{tag}</span>
-												))}
-											</div>
-										)}
-									</div>
+								<div class="day-event-wrapper">
+									<a href={`/events/${event.id}/`} class="day-event-link">
+										<div class="day-event-content">
+											<h4 class="day-event-title">
+												{event.name}
+												{event.dayIndicator && <span class="day-indicator">{event.dayIndicator}</span>}
+											</h4>
+											<p class="day-event-description">{event.short_description}</p>
+											{event.tags && event.tags.length > 0 && (
+												<div class="event-tags day-event-tags">
+													{event.tags.map(tag => (
+														<span class="event-tag">{tag}</span>
+													))}
+												</div>
+											)}
+										</div>
+									</a>
 									<div class="day-event-actions">
 										{event.tickets ? (
-											<a href={event.tickets} target="_blank" rel="noopener noreferrer" class="day-tickets-link" onclick="event.stopPropagation();">
+											<a href={event.tickets} target="_blank" rel="noopener noreferrer" class="day-tickets-link">
 												Tickets
 											</a>
 										) : event.website && (
-											<a href={event.website} target="_blank" rel="noopener noreferrer" class="day-website-link" onclick="event.stopPropagation();">
+											<a href={event.website} target="_blank" rel="noopener noreferrer" class="day-website-link">
 												Website
 											</a>
 										)}
 									</div>
-								</a>
+								</div>
 							</li>
 						))}
 					</ul>
@@ -688,8 +690,6 @@ console.log("TBC events length:", tbcEvents.length);
 			text-decoration: none;
 			color: inherit;
 			flex: 1;
-			display: flex;
-			flex-direction: column;
 		}
 
 		.event-content {
@@ -697,7 +697,7 @@ console.log("TBC events length:", tbcEvents.length);
 			flex: 1;
 			display: flex;
 			flex-direction: column;
-			min-height: 250px;
+			min-height: 220px;
 		}
 
 		.event-title {
@@ -738,6 +738,12 @@ console.log("TBC events length:", tbcEvents.length);
 			font-weight: 500;
 		}
 
+		.event-actions {
+			display: flex;
+			padding: 0 25px 25px;
+			justify-content: center;
+		}
+		
 		.website-link {
 			display: inline-block;
 			background-color: var(--primary);
@@ -764,18 +770,10 @@ console.log("TBC events length:", tbcEvents.length);
 			font-weight: 500;
 			transition: background-color 0.3s;
 			text-align: center;
-			margin-right: 10px;
 		}
 		
 		.tickets-link:hover {
 			background-color: #2aa147;
-		}
-		
-		.event-actions {
-			display: flex;
-			padding: 0 25px 25px;
-			justify-content: center;
-			width: 100%;
 		}
 		
 		/* Days View */
@@ -806,10 +804,6 @@ console.log("TBC events length:", tbcEvents.length);
 			overflow: hidden;
 			box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 			transition: transform 0.3s, box-shadow 0.3s;
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			padding: 20px;
 		}
 		
 		.day-event:hover {
@@ -817,15 +811,17 @@ console.log("TBC events length:", tbcEvents.length);
 			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 		}
 
+		.day-event-wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 20px;
+		}
+
 		.day-event-link {
 			text-decoration: none;
 			color: inherit;
 			flex: 1;
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			justify-content: space-between;
-			width: 100%;
 		}
 		
 		.day-event-content {
@@ -893,8 +889,6 @@ console.log("TBC events length:", tbcEvents.length);
 		}
 		
 		.day-event-actions {
-			padding: 0;
-			margin-left: 20px;
 			display: flex;
 			justify-content: center;
 			min-width: 120px;

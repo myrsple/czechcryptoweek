@@ -6,7 +6,7 @@ export const fallbackEvents = [
     dateISO: "2025-05-26",
     short_description: "The official opening event of Czech Crypto Week and ETHPrague.",
     website: "https://ethprague.com",
-    tickets: "https://lu.ma/czechcryptoweek-kickoff",
+    tickets: "https://tix.ducttape.events/dt/ethpragueconf25/",
     confirmed: true,
     location: "Prague",
     description: "Join us for the official kick-off of Czech Crypto Week and ETHPrague 2025. Meet fellow attendees, speakers, and organizers while getting an overview of the exciting week ahead.",
