@@ -14,6 +14,25 @@ export const fallbackEvents = [
     tags: ["Social", "Community", "Opening"]
   },
   {
+    id: "pragma",
+    name: "Pragma Prague",
+    date: "May 27, 2025",
+    dateISO: "2025-05-27",
+    short_description: "The premier developer-focused conference for the Ethereum ecosystem and beyond.",
+    website: "https://ethglobal.com/events/pragma-prague",
+    tickets: "https://ethglobal.com/events/pragma-prague",
+    confirmed: true,
+    location: "Prague",
+    description: "Pragma is a developer-focused conference showcasing the best of Ethereum and Web3 builder tools and infrastructure. Join leading developers and innovators for discussions on the future of blockchain development.",
+    organizers: ["ETHGlobal"],
+    venue: {
+      name: "Holešovice Market - Hall 13",
+      address: "Bubenské nábř. 306, 170 00 Praha 7-Holešovice, Czechia",
+      maps: "https://maps.app.goo.gl/rZVoWVuGwQ4WeMEE7"
+    },
+    tags: ["Conference", "Developer", "Ethereum"]
+  },
+  {
     id: "ethprague2025",
     name: "ETHPrague 2025",
     date: "May 27-29, 2025",
