@@ -1,5 +1,18 @@
 export const fallbackEvents = [
   {
+    id: "kickoff2025",
+    name: "ETHPrague & Czech Crypto Week Kick-off",
+    date: "May 26, 2025",
+    dateISO: "2025-05-26",
+    short_description: "The official opening event of Czech Crypto Week and ETHPrague.",
+    website: "https://ethprague.com",
+    confirmed: true,
+    location: "Prague",
+    description: "Join us for the official kick-off of Czech Crypto Week and ETHPrague 2025. Meet fellow attendees, speakers, and organizers while getting an overview of the exciting week ahead.",
+    organizers: ["ETHPrague Team", "EthCzech Community"],
+    tags: ["Social", "Community", "Opening"]
+  },
+  {
     id: "ethprague2025",
     name: "ETHPrague 2025",
     date: "May 27-29, 2025",
@@ -7,7 +20,7 @@ export const fallbackEvents = [
     short_description: "A conference focused on Ethereum development and innovation.",
     website: "https://ethprague.com",
     confirmed: true,
-    location: "Prague, Czech Republic",
+    location: "Prague",
     description: "ETHPrague is a leading Ethereum conference focusing on innovation, development, and the future of web3. Join developers, entrepreneurs, and enthusiasts for three days of talks, workshops, and networking in the heart of Prague.",
     organizers: ["ETHPrague Team"],
     tags: ["Conference", "Ethereum"]
@@ -20,7 +33,7 @@ export const fallbackEvents = [
     short_description: "A global hackathon bringing together Ethereum developers to build projects.",
     website: "https://ethglobal.com/events/prague",
     confirmed: true,
-    location: "Cubex Centrum Praha, Prague, Czech Republic",
+    location: "Prague",
     description: "Join the world's premier Ethereum hackathon where developers collaborate to build innovative decentralized applications. With over $175,000 in prizes and support from industry leaders, this is your chance to turn your ideas into reality. The event features technical mentorship, workshops, exclusive swag, curated content, and free food & drinks.",
     organizers: ["ETHGlobal"],
     venue: {
@@ -33,12 +46,12 @@ export const fallbackEvents = [
   {
     id: "protolayers",
     name: "ProtoLayers Conference",
-    date: "May 26, 2025",
-    dateISO: "2025-05-26",
+    date: "May 31, 2025",
+    dateISO: "2025-05-31",
     short_description: "An Ethereum research and development focused event by ProtoLayers.",
     website: "https://protolayers.dev",
     confirmed: true,
-    location: "Prague, Czech Republic",
+    location: "Prague",
     description: "Join ProtoLayers for a deep dive into cutting-edge Ethereum research and development. This focused event brings together researchers and developers to discuss the latest advances in Ethereum protocol, layer-2 solutions, and scaling technologies.",
     organizers: ["Damsky", "ProtoLayers Team"],
     tags: ["Conference", "R&D", "Layer2"]
@@ -51,7 +64,7 @@ export const fallbackEvents = [
     short_description: "A 4-day bootcamp where students and beginner developers will be able to go from zero to hero with their Web3 development skills.",
     website: "https://urbe.build/",
     confirmed: true,
-    location: "Prague, Czech Republic",
+    location: "Prague",
     description: "Urbe Campus is a 4-day bootcamp where students and beginner developers will be able to go from zero to hero with their Web3 development skills. This hands-on learning experience is designed to help newcomers quickly build practical Web3 development competencies.",
     organizers: ["Urbe.eth Team"],
     tags: ["Bootcamp", "Education", "Developer"]
@@ -64,7 +77,7 @@ export const fallbackEvents = [
     short_description: "Join the local Ethereum community for networking and discussions.",
     website: "https://lu.ma/user/ethczech",
     confirmed: true,
-    location: "Prague, Czech Republic",
+    location: "Prague",
     description: "Join the local Ethereum community for an evening of networking, short presentations, and discussions. This is a great opportunity to meet like-minded enthusiasts, developers, and entrepreneurs who are building the future of Web3 in the Czech Republic and beyond.",
     organizers: ["EthCzech Community"],
     tags: ["Meetup", "Community", "Networking"]
