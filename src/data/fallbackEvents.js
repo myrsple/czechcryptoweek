@@ -117,9 +117,10 @@ export const fallbackEvents = [
   },
   {
     id: "web3privacy",
-    name: "Web3PrivacyNow Privacy Meetup",
-    date: "May 30, 2025",
-    dateISO: "2025-05-30",
+    name: "Web3Privacy Now Meetup x ETHPrague 2025",
+    date: "May 29, 2025",
+    dateISO: "2025-05-29",
+    time: "4:00 PM - 11:00 PM",
     short_description: "A meetup focused on privacy technologies in the Web3 space.",
     website: "https://web3privacy.info",
     tickets: "https://lu.ma/jhp1iapn",
