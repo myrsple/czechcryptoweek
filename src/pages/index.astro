@@ -1164,7 +1164,7 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 						// Check if event matches filters
 						const matchesDay = activeDay === 'all' || date === activeDay;
 						const matchesTags = activeTags.length === 0 || 
-							activeTags.every(tag => tags.includes(tag));
+							activeTags.some(tag => tags.includes(tag));
 						
 						// Show/hide based on filter match
 						if (matchesDay && matchesTags) {
@@ -1205,7 +1205,7 @@ console.log("Final confirmed events:", confirmedEvents.map(e => e.name));
 								
 								// Check if event matches tag filters
 								const matchesTags = activeTags.length === 0 || 
-									activeTags.every(tag => tags.includes(tag));
+									activeTags.some(tag => tags.includes(tag));
 								
 								// Show/hide based on tag match
 								if (matchesTags) {
