@@ -1,8 +1,8 @@
 {
   "name": "ETHGlobal Hackathon",
   "date": "May 30 - June 1, 2025",
-  "location": "Cubex Centrum Praha, Prague, Czech Republic",
-  "description": "Join the world's premier Ethereum hackathon where developers collaborate to build innovative decentralized applications. With over $175,000 in prizes and support from industry leaders, this is your chance to turn your ideas into reality. The event features technical mentorship, workshops, exclusive swag, curated content, and free food & drinks.",
+  "location": "Prague",
+  "description": "Join the world's premier Ethereum hackathon where developers collaborate to build innovative decentralized applications. With over $175,000 in prizes and support from industry leaders, this is your chance to turn your ideas into reality.",
   "organizers": ["ETHGlobal"],
   "website": "https://ethglobal.com/events/prague",
   "venue": {
