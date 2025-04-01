@@ -243,17 +243,11 @@ console.log("TBC events length:", tbcEvents.length);
 								)}
 							</div>
 							<div class="event-actions">
-								{event.tickets && (
+								{event.tickets ? (
 									<a href={event.tickets} target="_blank" rel="noopener noreferrer" class="tickets-link" onclick="event.stopPropagation();">
 										Tickets
 									</a>
-								)}
-								{!event.tickets && event.website && (
-									<a href={event.website} target="_blank" rel="noopener noreferrer" class="tickets-link" onclick="event.stopPropagation();">
-										Tickets
-									</a>
-								)}
-								{event.website && (
+								) : event.website && (
 									<a href={event.website} target="_blank" rel="noopener noreferrer" class="website-link" onclick="event.stopPropagation();">
 										Website
 									</a>
@@ -293,17 +287,11 @@ console.log("TBC events length:", tbcEvents.length);
 										)}
 									</div>
 									<div class="day-event-actions">
-										{event.tickets && (
+										{event.tickets ? (
 											<a href={event.tickets} target="_blank" rel="noopener noreferrer" class="day-tickets-link" onclick="event.stopPropagation();">
 												Tickets
 											</a>
-										)}
-										{!event.tickets && event.website && (
-											<a href={event.website} target="_blank" rel="noopener noreferrer" class="day-tickets-link" onclick="event.stopPropagation();">
-												Tickets
-											</a>
-										)}
-										{event.website && (
+										) : event.website && (
 											<a href={event.website} target="_blank" rel="noopener noreferrer" class="day-website-link" onclick="event.stopPropagation();">
 												Website
 											</a>
