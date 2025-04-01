@@ -862,7 +862,16 @@ console.log("TBC events length:", tbcEvents.length);
 			margin-bottom: 0;
 		}
 		
-		.day-website-link {
+		.day-event-actions {
+			display: flex;
+			justify-content: center;
+			min-width: 120px;
+			width: 120px;
+		}
+		
+		.day-website-link, .day-tickets-link {
+			width: 100px;
+			text-align: center;
 			background-color: var(--primary);
 			color: white;
 			padding: 8px 16px;
@@ -871,7 +880,6 @@ console.log("TBC events length:", tbcEvents.length);
 			font-weight: 500;
 			transition: background-color 0.3s;
 			white-space: nowrap;
-			margin-left: 20px;
 		}
 		
 		.day-website-link:hover {
@@ -880,24 +888,10 @@ console.log("TBC events length:", tbcEvents.length);
 		
 		.day-tickets-link {
 			background-color: #34c759;
-			color: white;
-			padding: 8px 16px;
-			border-radius: 4px;
-			font-size: 0.9rem;
-			font-weight: 500;
-			transition: background-color 0.3s;
-			white-space: nowrap;
-			margin-right: 10px;
 		}
 		
 		.day-tickets-link:hover {
 			background-color: #2aa147;
-		}
-		
-		.day-event-actions {
-			display: flex;
-			justify-content: center;
-			min-width: 120px;
 		}
 		
 		.no-results {
