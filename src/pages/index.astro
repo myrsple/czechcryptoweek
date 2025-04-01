@@ -34,7 +34,13 @@ async function fetchEventData() {
 function processEvents(events) {
 	console.log("Processing events:", events.map(e => e.name));
 
-	const confirmed = events.filter(event => event.confirmed);
+	const confirmed = events.filter(event => event.confirmed)
+		.sort((a, b) => {
+			// Sort by dateISO (start date) for proper ordering
+			if (!a.dateISO) return 1;
+			if (!b.dateISO) return -1;
+			return a.dateISO.localeCompare(b.dateISO);
+		});
 	const tbc = events.filter(event => !event.confirmed);
 	
 	// Debug events
