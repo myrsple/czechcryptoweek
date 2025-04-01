@@ -121,7 +121,7 @@ export const fallbackEvents = [
     dateISO: "2025-05-30",
     short_description: "A meetup focused on privacy technologies in the Web3 space.",
     website: "https://web3privacy.info",
-    tickets: "https://lu.ma/web3privacy-prague2025",
+    tickets: "https://lu.ma/jhp1iapn",
     confirmed: true,
     location: "Prague",
     description: "Join the Web3PrivacyNow community for an evening dedicated to privacy technologies in the decentralized web. Learn about the latest advancements in zero-knowledge proofs, privacy-preserving protocols, and practical tools for enhancing privacy in blockchain applications.",
