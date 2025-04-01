@@ -93,8 +93,16 @@ export const fallbackEvents = [
     tags: ["Meetup", "Developer"]
   },
   {
+    id: "web3privacy",
     name: "Web3PrivacyNow Privacy Meetup",
-    confirmed: false,
+    date: "May 30, 2025",
+    dateISO: "2025-05-30",
+    short_description: "A meetup focused on privacy technologies in the Web3 space.",
+    website: "https://web3privacy.info",
+    confirmed: true,
+    location: "Prague",
+    description: "Join the Web3PrivacyNow community for an evening dedicated to privacy technologies in the decentralized web. Learn about the latest advancements in zero-knowledge proofs, privacy-preserving protocols, and practical tools for enhancing privacy in blockchain applications.",
+    organizers: ["Web3Privacy Now Team"],
     tags: ["Meetup", "Privacy"]
   },
   {
