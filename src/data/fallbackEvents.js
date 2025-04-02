@@ -93,6 +93,26 @@ export const fallbackEvents = [
     tags: ["Bootcamp", "Education", "Developer"]
   },
   {
+    id: "beerfi",
+    name: "Beerfi Prague - Web3 on-chain dev Meetup #37",
+    date: "May 27, 2025",
+    dateISO: "2025-05-27",
+    time: "7:00 PM - 10:00 PM CEST",
+    short_description: "A monthly meetup for Web3 builders, smart contract programmers and auditors.",
+    website: "https://www.meetup.com/web3-on-chain-dev-meetup-group/events/304723057/",
+    tickets: "https://www.meetup.com/web3-on-chain-dev-meetup-group/events/304723057/",
+    confirmed: true,
+    location: "Prague",
+    description: "Once a month on the last Tuesday, we bring together Web3 builders - smart contract programmers and auditors. Whether you are a Web2 developer interested to learn more or a senior in the Web3 sphere, our meetup is for you! Enjoy a nice cold lager and get ready to blow your mind on what's possible in blockchain.",
+    organizers: ["Radek Š.", "Ethan C."],
+    venue: {
+      name: "Cafe DECADA",
+      address: "Vacínova 876/10, Hlavní město Praha",
+      maps: "https://maps.app.goo.gl/oBhBZ4XXLe5HSpK16"
+    },
+    tags: ["Meetup", "Developer", "Smart Contracts"]
+  },
+  {
     id: "meetup",
     name: "EthCzech Community Meetup",
     date: "May 29, 2025",
