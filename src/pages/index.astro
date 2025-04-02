@@ -255,11 +255,12 @@ console.log("TBC events length:", tbcEvents.length);
 							</div>
 						</a>
 						<div class="event-actions">
-							{event.tickets ? (
+							{event.tickets && (
 								<a href={event.tickets} target="_blank" rel="noopener noreferrer" class="tickets-link">
 									Tickets
 								</a>
-							) : event.website && (
+							)}
+							{!event.tickets && event.website && (
 								<a href={event.website} target="_blank" rel="noopener noreferrer" class="website-link">
 									Website
 								</a>
@@ -300,11 +301,12 @@ console.log("TBC events length:", tbcEvents.length);
 										</div>
 									</a>
 									<div class="day-event-actions">
-										{event.tickets ? (
+										{event.tickets && (
 											<a href={event.tickets} target="_blank" rel="noopener noreferrer" class="day-tickets-link">
 												Tickets
 											</a>
-										) : event.website && (
+										)}
+										{!event.tickets && event.website && (
 											<a href={event.website} target="_blank" rel="noopener noreferrer" class="day-website-link">
 												Website
 											</a>
