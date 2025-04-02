@@ -130,11 +130,6 @@ export const fallbackEvents = [
     tags: ["Social"]
   },
   {
-    name: "BeerFi Developer Meetup",
-    confirmed: false,
-    tags: ["Meetup", "Developer"]
-  },
-  {
     id: "web3privacy",
     name: "Web3Privacy Now Meetup x ETHPrague 2025",
     date: "May 29, 2025",
