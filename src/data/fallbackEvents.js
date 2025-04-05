@@ -125,6 +125,20 @@ export const fallbackEvents = [
     tags: ["Meetup", "Community", "Networking"]
   },
   {
+    id: "ethglobal-happy-hour",
+    name: "ETHGlobal Happy Hour Prague",
+    date: "May 29, 2025",
+    dateISO: "2025-05-29",
+    time: "6:00 PM - 8:30 PM",
+    short_description: "Connect with the ETHGlobal community in Prague.",
+    tickets: "https://lu.ma/ethglobal-happy-hour-prague",
+    confirmed: true,
+    location: "Prague",
+    description: "Get ready to party with the ETHGlobal community in the heart of Prague! On Thursday, May 29 2025, from 6:00 PM to 8:30 PM, join for an unforgettable evening of drinks, laughs, and making new connections. Whether you're a blockchain enthusiast, a hacker, or just someone who loves a good time, this is the place to be.",
+    organizers: ["ETHGlobal"],
+    tags: ["Social", "Networking", "Community"]
+  },
+  {
     name: "Ackee Happy Hour",
     confirmed: false,
     tags: ["Social"]
