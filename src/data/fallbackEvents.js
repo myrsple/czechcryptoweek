@@ -86,6 +86,7 @@ export const fallbackEvents = [
     dateISO: "2025-05-28",
     short_description: "A 4-day bootcamp where students and beginner developers will be able to go from zero to hero with their Web3 development skills.",
     website: "https://urbe.build/",
+    tickets: "https://lu.ma/7557qa0v",
     confirmed: true,
     location: "Prague",
     description: "Urbe Campus is a 4-day bootcamp where students and beginner developers will be able to go from zero to hero with their Web3 development skills. This hands-on learning experience is designed to help newcomers quickly build practical Web3 development competencies.",
