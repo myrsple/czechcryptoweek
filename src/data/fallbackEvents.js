@@ -114,8 +114,8 @@ export const fallbackEvents = [
   {
     id: "meetup",
     name: "EthCzech Community Meetup",
-    date: "May 29, 2025",
-    dateISO: "2025-05-29",
+    date: "May 28, 2025",
+    dateISO: "2025-05-28",
     short_description: "Join the local Ethereum community for networking and discussions.",
     website: "https://lu.ma/user/ethczech",
     confirmed: true,
