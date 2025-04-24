@@ -140,9 +140,23 @@ export const fallbackEvents = [
     tags: ["Social", "Networking", "Community"]
   },
   {
-    name: "Ackee Happy Hour",
-    confirmed: false,
-    tags: ["Social"]
+    id: "ackee",
+    name: "ETH Prague isn't over: Ackee Breakfast Meetup",
+    date: "May 30, 2025",
+    dateISO: "2025-05-30",
+    time: "11:00 AM - 2:00 PM",
+    short_description: "Morning snack & chat with web3 enthusiasts and security experts.",
+    tickets: "https://lu.ma/xzl8rjmt",
+    confirmed: true,
+    location: "Prague",
+    description: "Stop by for a morning snack & chat with fellow web3 enthusiasts and blockchain security experts. The breakfast hosted by Ackee is the perfect opportunity to connect and recharge before another day full of action.",
+    organizers: ["Ackee", "Tomas Kovarik"],
+    venue: {
+      name: "BLOCK Karlín (Ackee Office)",
+      address: "Rohanské nábř. 717/4, 186 00 Praha 8-Karlín, Czechia",
+      maps: "https://maps.app.goo.gl/DRCuYhwLVgJ9jewe6"
+    },
+    tags: ["Meetup", "Social", "Networking", "Breakfast"]
   },
   {
     id: "web3privacy",
