@@ -196,7 +196,7 @@ console.log("TBC events length:", tbcEvents.length);
 	<!-- Confirmed Events Section -->
 	<section id="events" class="events-section">
 		<h2>Confirmed Events</h2>
-		<p class="event-counter">{confirmedEvents.length} events confirmed so far</p>
+		<p class="event-counter">{confirmedEvents.length}</p>
 		
 		<!-- Filtering UI -->
 		<div class="filtering-ui">
@@ -539,10 +539,12 @@ console.log("TBC events length:", tbcEvents.length);
 
 		.event-counter {
 			text-align: center;
-			margin-top: -20px; /* Pull it up slightly */
-			margin-bottom: 30px;
-			font-size: 1rem;
-			color: var(--text-light, #666); /* Use theme variable */
+			margin-top: -15px; /* Adjust margin */
+			margin-bottom: 25px; /* Adjust margin */
+			font-size: 2.5rem; /* Increase font size significantly */
+			font-weight: 700; /* Make it bolder */
+			color: var(--primary, #0544C7); /* Use primary color */
+			line-height: 1; /* Adjust line height */
 		}
 
 		/* Filtering UI */
