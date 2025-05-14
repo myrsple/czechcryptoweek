@@ -1,0 +1,19 @@
+{
+  "id": "eth-prague-bull-run",
+  "name": "ETH Prague Bull Run",
+  "date": "May 28, 2025",
+  "dateISO": "2025-05-28",
+  "time": "7:30 AM - ~8:15 AM (run), then café hangout",
+  "short_description": "A literal 5K social run to kickstart ETH Prague with bullish energy, followed by coffee and croissants.",
+  "website": "",
+  "tickets": "",
+  "confirmed": true,
+  "location": "Prague, Czechia",
+  "description": "Still waiting for the charts to move? Move your legs instead. Block by block. Step by step. Gas up IRL. A literal 5K run to kickstart ETH Prague with real GMs and bullish energy.\n\nWhat's Going Down:\n\n*   5K social run through the heart of Prague.\n*   Pace: somewhere between degen sprint and validator slow sync.\n*   Start time: 7:30 AM sharp — because the real ones wake up bullish.\n*   No talks, no booths — just real conversation while moving.\n*   End at a local café for coffee, croissants, and quality hangs.\n*   Can't run? Meet us at the café. Same bullish energy, fewer steps.\n\nVibe:\n\n*   Proper GM energy while the city's still booting up.\n*   Meet degens, devs, and founders who actually ship (or run).\n*   No stage, no agenda — just pace and presence.\n*   Zero gas, all gains.",
+  "organizers": ["Artiffine"],
+  "tags": ["Social", "Run", "Networking", "Community", "ETHPrague Side Event", "DeFi", "Web3"],
+  "venue": {
+    "name": "Meetup spot and café TBA",
+    "address": "Central Prague"
+  }
+} 

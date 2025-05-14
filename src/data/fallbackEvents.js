@@ -174,6 +174,63 @@ export const fallbackEvents = [
     tags: ["Meetup", "Privacy"]
   },
   {
+    id: "institutional-blockchain-breakfast",
+    name: "Institutional Blockchain Breakfast | ETHPrague",
+    date: "May 27, 2025",
+    dateISO: "2025-05-27",
+    time: "8:00 AM - 12:00 PM",
+    short_description: "A private side event by GTS 20 during ETHPrague, focused on institutional blockchain adoption, featuring roundtables and networking.",
+    website: "https://lu.ma/iijukxg9",
+    tickets: "https://lu.ma/iijukxg9",
+    confirmed: true,
+    location: "Hlavní město Praha, Hlavní město Praha",
+    description: "🌅 Rise with Us at the Institutional Blockchain Breakfast. A Private Side Event During ETHPrague 2025. Start your morning with signal, not noise. We\'re bringing together institutions, ecosystem operators, and infrastructure teams for an off-the-record morning of sharp roundtables, meaningful chats, and focused networking — all with a builder-first mindset. Coffee, not panels. Real use cases, not hypotheticals. This is where next-gen institutional blockchain adoption gets dissected.",
+    organizers: ["GTS 20"],
+    tags: ["Breakfast", "Networking", "Institutional", "ETHPrague Side Event"],
+    venue: {
+      name: "Register to See Address",
+      address: "Hlavní město Praha, Hlavní město Praha"
+    }
+  },
+  {
+    id: "ico-summer-begins",
+    name: "ICO Summer Begins @ ETHPrague",
+    date: "May 27, 2025",
+    dateISO: "2025-05-27",
+    time: "9:00 AM - 3:00 PM",
+    short_description: "An exclusive side event for professionals involved in token launches, focusing on strategies, legal considerations, and marketing for TGEs in 2025.",
+    website: "https://lu.ma/312jc93v",
+    tickets: "https://lu.ma/312jc93v",
+    confirmed: true,
+    location: "Hlavní město Praha, Hlavní město Praha",
+    description: "Private Roundtable for TGE Innovators & Builders. As ETHPrague 2025 gathers the Ethereum community in Prague, we\'re hosting an exclusive side event for professionals involved in token launches. This invite-only gathering will delve into the latest strategies, legal considerations, and marketing approaches for Token Generation Events (TGEs) in 2025.",
+    organizers: ["Grabber Network"],
+    tags: ["Roundtable", "TGE", "ICO", "Token Launch", "ETHPrague Side Event", "Invite-only"],
+    venue: {
+      name: "Register to See Address",
+      address: "Hlavní město Praha, Hlavní město Praha"
+    }
+  },
+  {
+    id: "eth-prague-bull-run",
+    name: "ETH Prague Bull Run",
+    date: "May 28, 2025",
+    dateISO: "2025-05-28",
+    time: "7:30 AM - ~8:15 AM (run), then café hangout",
+    short_description: "A literal 5K social run to kickstart ETH Prague with bullish energy, followed by coffee and croissants.",
+    website: "",
+    tickets: "",
+    confirmed: true,
+    location: "Prague, Czechia",
+    description: "Still waiting for the charts to move? Move your legs instead. Block by block. Step by step. Gas up IRL. A literal 5K run to kickstart ETH Prague with real GMs and bullish energy.\n\nWhat's Going Down:\n\n*   5K social run through the heart of Prague.\n*   Pace: somewhere between degen sprint and validator slow sync.\n*   Start time: 7:30 AM sharp — because the real ones wake up bullish.\n*   No talks, no booths — just real conversation while moving.\n*   End at a local café for coffee, croissants, and quality hangs.\n*   Can't run? Meet us at the café. Same bullish energy, fewer steps.\n\nVibe:\n\n*   Proper GM energy while the city's still booting up.\n*   Meet degens, devs, and founders who actually ship (or run).\n*   No stage, no agenda — just pace and presence.\n*   Zero gas, all gains.",
+    organizers: ["Artiffine"],
+    tags: ["Social", "Run", "Networking", "Community", "ETHPrague Side Event", "DeFi", "Web3"],
+    venue: {
+      name: "Meetup spot and café TBA",
+      address: "Central Prague"
+    }
+  },
+  {
     name: "OnlyDust Open Source Meetup",
     confirmed: false,
     tags: ["Meetup", "Open Source"]
