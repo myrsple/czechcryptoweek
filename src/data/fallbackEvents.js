@@ -263,8 +263,8 @@ export const fallbackEvents = [
   {
     id: "bohemia-roots-dao",
     name: "Bohemia Roots: How to DAO?",
-    date: "May 29",
-    dateISO: "2024-05-29",
+    date: "May 29, 2025",
+    dateISO: "2025-05-29",
     time: "13:00 - 17:00",
     short_description: "Official Polkadot side event at ETH Prague about DAOs.",
     tickets: "https://lu.ma/91yecn2o",
