@@ -1,0 +1,16 @@
+{
+  "id": "austin-griffith-workshop",
+  "name": "Build on Blockchain with Ease - with Austin Griffith",
+  "date": "May 29, 2025",
+  "dateISO": "2025-05-29",
+  "time": "17:00 - 20:00",
+  "location": "Faculty of Electrical Engineering, Czech Technical University in Prague, Technická 2, Praha 6 - Dejvice",
+  "gmaps": "https://maps.app.goo.gl/Qr4F1mNqTQQhVpVn8",
+  "description": "See What It's Like to Build on the Blockchain – Live with Austin Griffith! Curious how blockchain apps are actually built? Join us for a special hands-on session with Austin Griffith – leading Web3 developer, founder of the Buidl Guidl community, creator of Scaffold-ETH. Austin will guide you through a live comparison of building in the world of Web2 vs Web3, showing the real-life impact of decentralization for developers.",
+  "short_description": "A hands-on session with Austin Griffith on building blockchain apps, Web2 vs Web3, and AI-assisted prototyping.",
+  "tickets": "https://lu.ma/8qf9bwkv",
+  "confirmed": true,
+  "organizers": ["CZM Calendar", "EthereumCzech", "PWNDAO"],
+  "contact": "ethczech@gmail.com",
+  "tags": ["Workshop", "Developer", "Live Coding", "AI", "Web3"]
+} 
