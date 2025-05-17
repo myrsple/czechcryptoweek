@@ -85,6 +85,25 @@
     "tags": ["Meetup", "Community", "Networking"]
   },
   {
+    "id": "crypto-outdoor-workout-eth-prague",
+    "name": "Crypto Outdoor Workout (COW) - ETH Prague",
+    "date": "May 29, 2025",
+    "dateISO": "2025-05-29",
+    "time": "7:30 AM - 9:00 AM CEST",
+    "short_description": "Outdoor workout session at ETH Prague, suitable for all fitness levels. Hosted by Wirex Pay. Snacks and water provided.",
+    "website": "https://lu.ma/9p4ka749",
+    "tickets": "https://lu.ma/9p4ka749",
+    "confirmed": true,
+    "location": "Prague",
+    "description": "🏃‍♀️ Suitable for ANY fitness level 🏃‍♂️\n\nTake a break from the conference discussions and burn some calories gained from all those Czech beers 🍺 you will have knocked over by the middle of the week - at our traditional outdoor workout! 💪\n\nExpect a bit of everything:\n* ​warm-up\n* ​squats\n* ​push-ups\n* ​Vepřo Koleno\n* ​chin-ups\n* ​dips\n* ​abs\n* ​stretches\n* ​// Find the odd one out 🤣\n\nFeel free to: \n* ​exercise with our coach\n* ​work out on your own\n* ​keep your own pace (leave early if you need to)\n\n**********\n**High-protein snacks 🍫 and drinking water 💧 provided, as always!**\n**********\n\nSupported by:\nWirex Pay - cutting-edge stablecoin payment platform, combining blockchain innovation with real-world usability for seamless global transactions. Incubated by Wirex, the leading crypto debit card issuer since 2015.\nCTRL - non-profit community of open-source contributors.\nMighty.study - gamified platform for incentivised learning.\n\n**********\n\nIf interested in getting updates about other workout events that we run at crypto and fintech conferences, feel free to join our Telegram channel: https://t.me/crypto_outdoor_workout",
+    "organizers": ["Wirex Pay"],
+    "tags": ["Social", "Workout", "Fitness", "Community", "Wellbeing", "ETHPrague Side Event"],
+    "venue": {
+      "name": "Prague (Exact location TBC)",
+      "address": "// exact location to be confirmed //"
+    }
+  },
+  {
     "id": "web3privacy",
     "name": "Web3Privacy Now Meetup x ETHPrague",
     "date": "May 29, 2025",
