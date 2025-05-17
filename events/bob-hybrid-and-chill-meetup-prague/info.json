@@ -1,0 +1,19 @@
+{
+  "id": "bob-hybrid-and-chill-meetup-prague",
+  "name": "BOB Hybrid & Chill Meetup - Prague 🇨🇿",
+  "date": "May 28, 2025",
+  "dateISO": "2025-05-28",
+  "time": "6:00 PM - 9:00 PM",
+  "short_description": "Join the BOB team for an evening of insights, networking, and great conversations with the BOB community and Bitcoin DeFi enthusiasts during Prague Blockchain Week.",
+  "description": "​Join the BOB team at the **BOB Hybrid & Chill Meetup - Prague.**\n\n​We're bringing together the BOB community and Bitcoin DeFi enthusiasts for an evening of insights, networking, and great conversations. Come hang out with us during Prague Blockchain Week to hear the latest updates and connect with like-minded innovators. \n\n​**Who should attend**\n\n* ​BOB community\n* ​Bitcoin DeFi believers\n* ​Founders & builders\n\n​**What to expect:**\n\n* ​30+ attendees\n* ​Networking throughout the evening\n* ​Swag\n* ​Drinks & Bites\n\n​**📆 Schedule:**\n\n​18:00 | Doors open   \n18:00 - 21:00 | Networking   \n21:00 | End\n\n​**🔎 About the meetup**\n\n​BOB Hybrid & Chill is a global series of in-person meetups designed for the BOB community. Whether you're building on BOB, exploring what BOB is, or curious why the Hybrid L2 is the future—this is the place to get your questions answered.\n\n​**About the host**\n\nBOB (\"Build on Bitcoin\") is a Hybrid Layer-2 blockchain that combines the strengths of Bitcoin and Ethereum to create the ideal home for Bitcoin DeFi. The unique Hybrid L2 model merges the best of both ecosystems—Bitcoin's security and liquidity, with Ethereum's DeFi innovation, applications and active user base. By positioning BTC as the backbone of a new decentralized finance system, BOB can unlock new use cases and trillions in BTC liquidity.\n\n*_Disclaimer:_\n\n​_Event Photos and Videos: By attending this event, you consent to being photographed or recorded. BOB may use this content for marketing and publicity, including on its website, blog, social media, or third-party publications._\n\n​_Data Usage: By registering, you agree that BOB may collect and use the information you provide—such as your name, email, and Telegram username—to support event operations and follow-up communication._",
+  "organizers": ["BOB | The Hybrid L2", "BOB - Build on Bitcoin"],
+  "website": "https://lu.ma/ek001k2x",
+  "tickets": "https://lu.ma/ek001k2x",
+  "confirmed": true,
+  "location": "Prague",
+  "venue": {
+    "name": "TBC",
+    "address": "Prague"
+  },
+  "tags": ["Meetup", "Bitcoin", "DeFi", "Layer2", "Networking", "Community"]
+} 
