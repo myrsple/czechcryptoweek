@@ -145,6 +145,25 @@ export const fallbackEvents = [
     tags: ["Meetup", "Community", "Networking"]
   },
   {
+    id: "chain-reaction-pre-eth-global-dev-meetup",
+    name: "Chain Reaction: Pre-ETH Global Dev Meetup",
+    date: "May 29, 2025",
+    dateISO: "2025-05-29",
+    time: "1:00 PM - 5:00 PM",
+    short_description: "Pre-ETHGlobal Hackathon meetup by Rootstock. Connect, brainstorm, and meet fellow builders. Food, drinks, and merch provided.",
+    website: "https://lu.ma/t04gp74v",
+    tickets: "https://lu.ma/t04gp74v",
+    confirmed: true,
+    location: "Prague",
+    description: "​Are you attending ETHGlobal Hackathon in Prague? Looking to connect, brainstorm ideas, and meet fellow builders before the event kicks off?\n\n​​Join Rootstock for a laid-back pre-hackathon meetup in Prague! \n\n​​This is your chance to meet like-minded hackers, bounce ideas around, and get inspired—all in a relaxed, friendly atmosphere. No formal agenda—just good conversations, great people, and plenty of fun.\n\n​​We've got food, drinks and exclusive Rootstock merch waiting for you. Whether you're new to Rootstock or already familiar, our team will be there to chat about how you can leverage your Ethereum skills to build on Bitcoin.  \n  \n​**Who's joining?**  \n🔥 **Rootstock Collective** – Empowering and rewarding builders and backers to drive innovation in Bitcoin's most trusted Layer 2.  \n🌍 **Flow** – The leader in Web3 consumer crypto apps, with over **40M+ on-chain wallets** spanning X, Instagram, collectibles and more.  \n  \n**About Rootstock**\n\n​​Rootstock has been the leading Bitcoin Layer 2 since 2018, combining Ethereum's development ecosystem with Bitcoin's security and decentralization. It's fully EVM-compatible, supports Solidity, and leverages over 80% of Bitcoin's hash power through merged-mined proof-of-work. Translation? You can take your Ethereum skills, deploy them on Bitcoin, and build something epic—no extra tools needed. Ready to dive in?",
+    organizers: ["Rootstock", "RootstockCollective", "Flow.com"],
+    tags: ["Meetup", "Developer", "Networking", "Hackathon", "Bitcoin", "Layer2", "ETHGlobal Side Event"],
+    venue: {
+      name: "Second Culture",
+      address: "Dělnická 475/43, 170 00 Praha 7-Holešovice, Czechia"
+    }
+  },
+  {
     id: "ethglobal-happy-hour",
     name: "ETHGlobal Happy Hour Prague",
     date: "May 29, 2025",
@@ -203,7 +222,7 @@ export const fallbackEvents = [
     tickets: "https://lu.ma/iijukxg9",
     confirmed: true,
     location: "Hlavní město Praha, Hlavní město Praha",
-    description: "🌅 Rise with Us at the Institutional Blockchain Breakfast. A Private Side Event During ETHPrague 2025. Start your morning with signal, not noise. We\'re bringing together institutions, ecosystem operators, and infrastructure teams for an off-the-record morning of sharp roundtables, meaningful chats, and focused networking — all with a builder-first mindset. Coffee, not panels. Real use cases, not hypotheticals. This is where next-gen institutional blockchain adoption gets dissected.",
+    description: "🌅 Rise with Us at the Institutional Blockchain Breakfast. A Private Side Event During ETHPrague 2025. Start your morning with signal, not noise. We're bringing together institutions, ecosystem operators, and infrastructure teams for an off-the-record morning of sharp roundtables, meaningful chats, and focused networking — all with a builder-first mindset. Coffee, not panels. Real use cases, not hypotheticals. This is where next-gen institutional blockchain adoption gets dissected.",
     organizers: ["GTS 20"],
     tags: ["Breakfast", "Networking", "Institutional", "ETHPrague Side Event"],
     venue: {
@@ -222,7 +241,7 @@ export const fallbackEvents = [
     tickets: "https://lu.ma/312jc93v",
     confirmed: true,
     location: "Hlavní město Praha, Hlavní město Praha",
-    description: "Private Roundtable for TGE Innovators & Builders. As ETHPrague 2025 gathers the Ethereum community in Prague, we\'re hosting an exclusive side event for professionals involved in token launches. This invite-only gathering will delve into the latest strategies, legal considerations, and marketing approaches for Token Generation Events (TGEs) in 2025.",
+    description: "Private Roundtable for TGE Innovators & Builders. As ETHPrague 2025 gathers the Ethereum community in Prague, we're hosting an exclusive side event for professionals involved in token launches. This invite-only gathering will delve into the latest strategies, legal considerations, and marketing approaches for Token Generation Events (TGEs) in 2025.",
     organizers: ["Grabber Network"],
     tags: ["Roundtable", "TGE", "ICO", "Token Launch", "ETHPrague Side Event", "Invite-only"],
     venue: {

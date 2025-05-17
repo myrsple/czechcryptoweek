@@ -104,6 +104,25 @@
     }
   },
   {
+    "id": "chain-reaction-pre-eth-global-dev-meetup",
+    "name": "Chain Reaction: Pre-ETH Global Dev Meetup",
+    "date": "May 29, 2025",
+    "dateISO": "2025-05-29",
+    "time": "1:00 PM - 5:00 PM",
+    "short_description": "Pre-ETHGlobal Hackathon meetup by Rootstock. Connect, brainstorm, and meet fellow builders. Food, drinks, and merch provided.",
+    "website": "https://lu.ma/t04gp74v",
+    "tickets": "https://lu.ma/t04gp74v",
+    "confirmed": true,
+    "location": "Prague",
+    "description": "​Are you attending ETHGlobal Hackathon in Prague? Looking to connect, brainstorm ideas, and meet fellow builders before the event kicks off?\n\n​​Join Rootstock for a laid-back pre-hackathon meetup in Prague! \n\n​​This is your chance to meet like-minded hackers, bounce ideas around, and get inspired—all in a relaxed, friendly atmosphere. No formal agenda—just good conversations, great people, and plenty of fun.\n\n​​We've got food, drinks and exclusive Rootstock merch waiting for you. Whether you're new to Rootstock or already familiar, our team will be there to chat about how you can leverage your Ethereum skills to build on Bitcoin.  \n  \n​**Who's joining?**  \n🔥 **Rootstock Collective** – Empowering and rewarding builders and backers to drive innovation in Bitcoin's most trusted Layer 2.  \n🌍 **Flow** – The leader in Web3 consumer crypto apps, with over **40M+ on-chain wallets** spanning X, Instagram, collectibles and more.  \n  \n**About Rootstock**\n\n​​Rootstock has been the leading Bitcoin Layer 2 since 2018, combining Ethereum's development ecosystem with Bitcoin's security and decentralization. It's fully EVM-compatible, supports Solidity, and leverages over 80% of Bitcoin's hash power through merged-mined proof-of-work. Translation? You can take your Ethereum skills, deploy them on Bitcoin, and build something epic—no extra tools needed. Ready to dive in?",
+    "organizers": ["Rootstock", "RootstockCollective", "Flow.com"],
+    "tags": ["Meetup", "Developer", "Networking", "Hackathon", "Bitcoin", "Layer2", "ETHGlobal Side Event"],
+    "venue": {
+      "name": "Second Culture",
+      "address": "Dělnická 475/43, 170 00 Praha 7-Holešovice, Czechia"
+    }
+  },
+  {
     "id": "web3privacy",
     "name": "Web3Privacy Now Meetup x ETHPrague",
     "date": "May 29, 2025",
