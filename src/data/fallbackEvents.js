@@ -66,6 +66,25 @@ export const fallbackEvents = [
     tags: ["Conference", "Ethereum"]
   },
   {
+    id: "interoperability-meetup-prague",
+    name: "Interoperability meetup in Prague",
+    date: "May 27, 2025",
+    dateISO: "2025-05-27",
+    time: "6:00 PM - 9:00 PM",
+    short_description: "Hosted by Neon EVM, this meetup will cover blockchain interoperability, scaling solutions, and the future of Ethereum, bringing together builders from various ecosystems.",
+    description: "​Join us for an event to talk blockchain interoperability, what hurdles we still need to solve to achieve true interoperability, and what we\'re already doing right already. Connect with fellow builders, protocol teams, and ecosystem leaders pushing the boundaries of multichain innovation. Whether you\'re building on EVM, Solana, or beyond — this is where the ecosystems converge.\\n\\n​We would like to invite you to attend a side event during ETHPrague 2025. At this meetup, we will discuss various solutions for scaling projects and the future of Ethereum scaling.\\n\\n**Agenda (in progress)**\\n\\n> ​☕️ 17:30 — 18:00 Doors open: welcome coffee & networking\\n> \\n> ​🎤 18:00 — 19:30 Keynotes and the panel discussion\\n> \\n> ​🍻 19:30 — 21:00 Networking, snacks & drinks",
+    organizers: ["Neon EVM"],
+    website: "https://lu.ma/vpc84c56",
+    tickets: "https://lu.ma/vpc84c56",
+    confirmed: true,
+    location: "Prague",
+    venue: {
+      name: "Second Culture",
+      address: "Dělnická 475/43, 170 00 Praha 7-Holešovice, Czechia"
+    },
+    tags: ["Meetup", "Interoperability", "Scaling", "EVM", "Solana", "Multichain", "Networking", "ETHPrague Side Event"]
+  },
+  {
     id: "beerfi",
     name: "Beerfi Prague - Web3 on-chain dev Meetup #37",
     date: "May 27, 2025",
@@ -75,7 +94,7 @@ export const fallbackEvents = [
     tickets: "https://www.meetup.com/web3-on-chain-dev-meetup-group/events/304723057/",
     confirmed: true,
     location: "Prague",
-    description: "Once a month on the last Tuesday, we bring together Web3 builders - smart contract programmers and auditors. Whether you are a Web2 developer interested to learn more or a senior in the Web3 sphere, our meetup is for you! Enjoy a nice cold lager and get ready to blow your mind on what's possible in blockchain.",
+    description: "Once a month on the last Tuesday, we bring together Web3 builders - smart contract programmers and auditors. Whether you are a Web2 developer interested to learn more or a senior in the Web3 sphere, our meetup is for you! Enjoy a nice cold lager and get ready to blow your mind on what\'s possible in blockchain.",
     organizers: ["Radek Š.", "Ethan C."],
     venue: {
       name: "Cafe DECADA",
