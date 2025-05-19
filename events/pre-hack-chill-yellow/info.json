@@ -1,0 +1,19 @@
+{
+  "id": "pre-hack-chill-yellow",
+  "name": "Pre-Hack & Chill with Yellow",
+  "date": "May 28, 2025",
+  "dateISO": "2025-05-28",
+  "time": "6:00 PM - 9:00 PM",
+  "short_description": "A curated, off-the-record gathering of builders for real conversations about Web3 innovations.",
+  "description": "Ready to meet top minds building the future of Web3?\n\nJoin us for an evening with developers, protocol architects, and core contributors working on the most exciting innovations in Web3.\n\nPre-Hack Dev Meetup isn't your average tech event. It's a curated, off-the-record gathering of builders who want real conversations, not slide decks. Expect beers & snacks, good energy, unfiltered ideas, and a chance to meet the people behind Yellow, including our Co-founder and Chief Architect, Louis Bellet.",
+  "organizers": ["Yellow Network"],
+  "website": "https://lu.ma/i4rfgt0b",
+  "tickets": "https://lu.ma/i4rfgt0b",
+  "confirmed": true,
+  "location": "Prague",
+  "venue": {
+    "name": "Scott.Weber Visionary",
+    "address": "Plynární 1617/10, 170 00 Praha 7-Holešovice, Czechia"
+  },
+  "tags": ["Meetup", "Developer", "Networking", "Web3", "Hackathon", "ETHGlobal Side Event"]
+} 
