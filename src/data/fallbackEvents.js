@@ -123,6 +123,25 @@ export const fallbackEvents = [
     }
   },
   {
+    id: "megaeth-community-hangout",
+    name: "MegaETH Community hangout Prague - hosted by Showdown",
+    date: "May 28, 2025",
+    dateISO: "2025-05-28",
+    time: "6:00 PM - 10:00 PM",
+    short_description: "Try a new game, chat with founders, and win a Fluffle NFT whitelist spot at this community hangout.",
+    description: "🎮 Try a new game, chat with founders, win a Fluffle 🎮\n\n📝 Important Info:\n\n* 📅 May 28th, 6:00 PM - 10:00 PM CET\n* 📍 Second Culture, Delnicka 475/43, Prague 🇨🇿 (formerly Parallel Polis)\n* 🎁 Fluffle NFT whitelist challenge\n* 🥂 First 50 guests receive a free drink!\n\nThis event is proudly supported by **MegaETH!**\n\n**Showdown** is a digital card game in development, a member of Mega Mafia, the accelerator of MegaETH labs.\n\nDrop by to chat with like-minded people, have a drink and try a cool game in development. We've planned a competition for the FluffleNFT whitelist + a talk from a proper genius.\n\nDM @ondrejstrasky on Twitter or Telegram to register for The Fluffle challenge, first come, first serve.\n\nThe event is **open** to everyone, but capacity is limited, please sign up!\n\n⏰ Agenda:\n\n* 6:00 PM - 6:30 PM: Check-in\n* 6:30 PM - 6:40 PM: Opening Word - Ondrej Strasky - Showdown founder\n* 6:45 PM - 7:45 PM: The Fluffle Challenge - Beat a founder in Showdown, get a Fluffle whitelist spot! 🏆\n* 8:00 PM - 8:30 PM: Filip Siroky - GP at MitonC, youngest CERN employee\n  * Topic: \"Blockchain Scaling: The Endgame\" 🚀\n* 8:30 PM - 10:00 PM: The Fluffle Challenge continues\n\n🔷 About MegaETH:\n\nMegaETH is the first Real-Time Blockchain, capable of streaming transactions at 100,000 transactions per second with millisecond-level responsiveness. Its near-instant performance unlocks fully onchain applications that can finally match the experience of best-in-class web2 apps while delivering on the promises of decentralization. 🐰 ⚡\n\n🃏 About Showdown:\n\nShowdown is a digital card game developed on MegaETH. It's designed by former #1 ranked Hearthstone and Magic the Gathering players. Showdown is 1v1 poker with a twist, featuring collectible action cards. Players build decks full of cards that can swing the tide of the game at any moment.",
+    organizers: ["Showdown", "MegaETH", "EthereumCzech"],
+    website: "https://lu.ma/ocwbb1a4",
+    tickets: "https://lu.ma/ocwbb1a4",
+    confirmed: true,
+    location: "Prague",
+    venue: {
+      name: "Second Culture",
+      address: "Dělnická 475/43, 170 00 Praha 7-Holešovice, Czechia"
+    },
+    tags: ["Meetup", "Gaming", "Networking", "NFT", "Layer2", "ETHPrague Side Event"]
+  },
+  {
     id: "pre-hack-chill-yellow",
     name: "Pre-Hack & Chill with Yellow",
     date: "May 28, 2025",
@@ -137,7 +156,7 @@ export const fallbackEvents = [
     location: "Prague",
     venue: {
       name: "Scott.Weber Visionary",
-      "address": "Plynární 1617/10, 170 00 Praha 7-Holešovice, Czechia"
+      address: "Plynární 1617/10, 170 00 Praha 7-Holešovice, Czechia"
     },
     tags: ["Meetup", "Developer", "Networking", "Web3", "Hackathon", "ETHGlobal Side Event"]
   },
