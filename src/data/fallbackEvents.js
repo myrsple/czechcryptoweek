@@ -325,6 +325,25 @@ export const fallbackEvents = [
     tags: ["Hackathon", "Ethereum"]
   },
   {
+    id: "based-house-prague",
+    name: "Based House @Prague",
+    date: "May 30, 2025",
+    dateISO: "2025-05-30",
+    time: "3:00 PM - 8:00 PM",
+    short_description: "A mix of hands-on sessions, demos, and onchain experiences organized by Hive and supported by Base.",
+    description: "Based House @Prague\n\nHive, a 12-week 0 equity program supported by Base that aims to support the global builders. Based house is organised by Hive and supported by Base.\n\nJoin us for a mix of hands-on sessions, demos, and onchain experiences. Let's get inspired together and build a better internet.\n\nAgenda:\n\n* 3 PM to 6 PM - Panels, Talks and Sessions\n* 6 PM to 8 PM - Networking and F&B\n\nAbout Hive:\nAs part of Hive's zero-equity, 12-week accelerator program, Based House supports teams through hands-on programming, live user testing, and high-impact demo days. It serves the dual purpose of a community incubator as well as a global launchpad for emerging Base projects in the Hive cohort.\n\nAbout Base:\nBase is a secure, low-cost, builder-friendly Ethereum L2 designed to help bring a billion users and a million developers onchain. Base transaction costs of less than 1 cent and speeds of less than 1 second make onchain technology more accessible to everyone. As an open and permissionless platform, we want to make it as easy and rewarding as possible for anyone to build and create on Base, to maintain ownership over their content, and earn revenue for their work. We're committed to engaging with and educating the developer community because we believe developers who build consumer applications are the key to unlocking an onchain future for all.",
+    organizers: ["Hive", "Base", "EthereumCzech"],
+    website: "https://lu.ma/bn87j0ga",
+    tickets: "https://lu.ma/bn87j0ga",
+    confirmed: true,
+    location: "Prague",
+    venue: {
+      name: "Register to See Address",
+      address: "Prague, Prague"
+    },
+    tags: ["Workshop", "Developer", "Networking", "Layer2", "Base", "Hive", "ETHGlobal Side Event"]
+  },
+  {
     id: "ackee",
     name: "ETH Prague isn't over: Ackee Breakfast Meetup",
     date: "May 30, 2025",
