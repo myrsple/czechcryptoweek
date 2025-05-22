@@ -1,0 +1,19 @@
+{
+  "id": "road-to-mvb-prague",
+  "name": "The Road to MVB: Prague Edition",
+  "date": "May 28, 2025",
+  "dateISO": "2025-05-28",
+  "time": "3:30 PM - 6:30 PM",
+  "short_description": "Meet the teams of BNB Chain, YZi Labs, and CMC Labs during the first edition of The Road to MVB, happening during ETH Prague!",
+  "website": "https://lu.ma/mb88e9jr",
+  "tickets": "https://lu.ma/mb88e9jr",
+  "confirmed": true,
+  "location": "Prague",
+  "description": "Meet the teams of BNB Chain, YZi Labs, and CMC Labs during the first edition of The Road to MVB, happening during ETH Prague!\n\nMVB, the Most Valuable Builders program, is BNB Chain's flagship accelerator run in partnership with YZi Labs and CMC Labs. Applications are currently open for its 10th cohort - come chat with the teams to ask any questions that you may have and connect with fellow builders.\n\nMore about the program on: https://www.bnbchain.org/en/blog/bnb-chain-expands-mvb-access-with-rolling-applications-and-selections\n\nAgenda:\n\n* 3:30 PM – Welcome\n* 4:00 PM – Introduction to BNB Chain, YZi Labs, and MVB\n* 5:00 PM – Q&A followed by networking drinks in Czech fashion 🍻\n\nReady for #BNBSummer?\n\nWant to see us more at ETH Prague? Benjamin Safaric, BD at BNB Chain, will also be speaking about RWAs on BNB Chain at the main event on May 29th.\n\nIf you are considering attending the main event at ETH Prague, we have a 25% discount code for you if you register with the code BNB25 (thank you ETH Prague team!)",
+  "organizers": ["BNB Chain", "YZi Labs", "CMC Labs"],
+  "tags": ["Meetup", "Accelerator", "Networking", "ETHPrague Side Event"],
+  "venue": {
+    "name": "Location provided after registration",
+    "address": "Hlavní město Praha, Hlavní město Praha"
+  }
+} 

@@ -425,5 +425,18 @@
     "confirmed": true,
     "location": "Prague",
     "tags": ["Workspace", "Networking", "Layer2", "ETHPrague Side Event"]
+  },
+  {
+    "id": "road-to-mvb-prague",
+    "name": "The Road to MVB: Prague Edition",
+    "date": "May 28, 2025",
+    "dateISO": "2025-05-28",
+    "time": "3:30 PM - 6:30 PM",
+    "short_description": "Meet the teams of BNB Chain, YZi Labs, and CMC Labs during the first edition of The Road to MVB, happening during ETH Prague!",
+    "website": "https://lu.ma/mb88e9jr",
+    "tickets": "https://lu.ma/mb88e9jr",
+    "confirmed": true,
+    "location": "Prague",
+    "tags": ["Meetup", "Accelerator", "Networking", "ETHPrague Side Event"]
   }
 ]
