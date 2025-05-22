@@ -412,5 +412,18 @@
     "organizers": ["CZM Calendar", "EthereumCzech", "PWNDAO"],
     "contact": "ethczech@gmail.com",
     "tags": ["Workshop", "Developer", "Live Coding", "AI", "Web3"]
+  },
+  {
+    "id": "stark-cafe",
+    "name": "STARK CAFE",
+    "date": "May 28, 2025",
+    "dateISO": "2025-05-28",
+    "time": "10:00 AM - 8:30 PM",
+    "short_description": "A great workspace & chill spot at EthPrague with free WiFi, coffee, beer, and lunch options.",
+    "website": "https://lu.ma/wwhjjfc7",
+    "tickets": "https://lu.ma/wwhjjfc7",
+    "confirmed": true,
+    "location": "Prague",
+    "tags": ["Workspace", "Networking", "Layer2", "ETHPrague Side Event"]
   }
 ]

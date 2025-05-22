@@ -424,5 +424,24 @@ export const fallbackEvents = [
     name: "Polkadot Meetup",
     confirmed: false,
     tags: ["Meetup", "Polkadot"]
+  },
+  {
+    id: "stark-cafe",
+    name: "STARK CAFE",
+    date: "May 28, 2025",
+    dateISO: "2025-05-28",
+    time: "10:00 AM - 8:30 PM",
+    short_description: "A great workspace & chill spot at EthPrague with free WiFi, coffee, beer, and lunch options.",
+    website: "https://lu.ma/wwhjjfc7",
+    tickets: "https://lu.ma/wwhjjfc7",
+    confirmed: true,
+    location: "Prague",
+    description: "Pop into the STARK CAFE for a great workspace & chill at EthPrague! ☕️🍻\n\nEnjoy free WiFi, delicious coffee, beer and lunch options—all provided. Whether you want to work, relax, or connect with others, STARK CAFE offers a friendly and inviting atmosphere just a few meters from the EthPrague venue.\n\nDrop by and make the most of your day!",
+    organizers: ["StarkWare", "Starknet Foundation", "Argent"],
+    tags: ["Workspace", "Networking", "Layer2", "ETHPrague Side Event"],
+    venue: {
+      name: "Location provided after registration",
+      address: "Hlavní město Praha, Hlavní město Praha"
+    }
   }
 ]; 
